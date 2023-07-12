@@ -38,7 +38,7 @@
     
       <meta 
         property="og:img" 
-        content="链表">
+        content="链表、栈与队列">
     
     
       <meta 
@@ -49,7 +49,7 @@
         content="2023-07-07">
       <meta 
         property="og:article:modified_time" 
-        content="2023-07-08">
+        content="2023-07-11">
       <meta 
         property="og:article:author" 
         content="HawYior">
@@ -397,7 +397,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -482,7 +482,7 @@
     
     
       <span class="dot"></span>
-      <span>390 字</span>
+      <span>742 字</span>
     
   </div>
   
@@ -492,11 +492,10 @@
     class="post-content">
     <h1 id="算法基础课基础算法2-1"><a class="markdownIt-Anchor" href="#算法基础课基础算法2-1"></a> 算法基础课基础算法2-1</h1>
 <h2 id="链表与邻接表"><a class="markdownIt-Anchor" href="#链表与邻接表"></a> 链表与邻接表</h2>
-<p>由于用<code>结构体+指针</code>比较慢，一般在面试题使用，在这里使用数组模拟链表</p>
+<p>由于用<code>结构体+指针</code>比较慢，一般在面试题使用，在这里使用<strong>数组</strong>模拟链表</p>
 <ul>
 <li>单链表</li>
 </ul>
-<p>邻接表：N个链表，用于存储树和图</p>
 <p><code>e[N]</code>：储存链表结点的值</p>
 <p><code>ne[N]</code>：储存结点的下一个结点下标，其中空结点下标为-1</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// head存储链表头，e[]存储节点的值，ne[]存储节点的next指针，idx表示当前用到了哪个节点</span>
@@ -561,7 +560,90 @@
     l<span class="token punctuation">[</span>r<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> l<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
     r<span class="token punctuation">[</span>l<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> r<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>50min</p>
+<ul>
+<li>邻接表</li>
+</ul>
+<p>N个单链表，用于存储树和图</p>
+<h2 id="栈"><a class="markdownIt-Anchor" href="#栈"></a> 栈</h2>
+<p>先进后出(FILO)</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// tt表示栈顶</span>
+<span class="token keyword">int</span> stk<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 向栈顶插入一个数</span>
+stk<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+
+<span class="token comment">// 从栈顶弹出一个数</span>
+tt <span class="token operator">--</span> <span class="token punctuation">;</span>
+
+<span class="token comment">// 栈顶的值</span>
+stk<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断栈是否为空，如果 tt > 0，则表示不为空</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>tt <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token operator">not</span> empty
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span>
+<span class="token punctuation">&#123;</span>
+    empty
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="队列"><a class="markdownIt-Anchor" href="#队列"></a> 队列</h2>
+<p>先进先出(FIFO)</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头，tt表示队尾</span>
+<span class="token keyword">int</span> q<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 向队尾插入一个数</span>
+q<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+
+<span class="token comment">// 从队头弹出一个数</span>
+hh <span class="token operator">++</span> <span class="token punctuation">;</span>
+
+<span class="token comment">// 队头的值</span>
+q<span class="token punctuation">[</span>hh<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断队列是否为空，如果 hh &lt;= tt，则表示不为空</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hh <span class="token operator">&lt;=</span> tt<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>循环队列</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头，tt表示队尾的后一个位置</span>
+<span class="token keyword">int</span> q<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 向队尾插入一个数</span>
+q<span class="token punctuation">[</span>tt <span class="token operator">++</span> <span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>tt <span class="token operator">==</span> N<span class="token punctuation">)</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 从队头弹出一个数</span>
+hh <span class="token operator">++</span> <span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hh <span class="token operator">==</span> N<span class="token punctuation">)</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 队头的值</span>
+q<span class="token punctuation">[</span>hh<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断队列是否为空，如果hh != tt，则表示不为空</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hh <span class="token operator">!=</span> tt<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="单调栈"><a class="markdownIt-Anchor" href="#单调栈"></a> 单调栈</h2>
+<p>题型：求给定序列每一个数左/右边离他最近的比他大/小的数</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>tt <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>stk<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> tt <span class="token operator">--</span> <span class="token punctuation">;</span>
+    stk<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="单调队列"><a class="markdownIt-Anchor" href="#单调队列"></a> 单调队列</h2>
+<p>题型：求滑动窗口的最大/小值</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>hh <span class="token operator">&lt;=</span> tt <span class="token operator">&amp;&amp;</span> <span class="token function">check_out</span><span class="token punctuation">(</span>q<span class="token punctuation">[</span>hh<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> hh <span class="token operator">++</span> <span class="token punctuation">;</span>  <span class="token comment">// 判断队头是否滑出窗口</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>hh <span class="token operator">&lt;=</span> tt <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>q<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> tt <span class="token operator">--</span> <span class="token punctuation">;</span>
+    q<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="kmp"><a class="markdownIt-Anchor" href="#kmp"></a> KMP</h2>
+<p>1.56</p>
 
   </div>
   <div>
@@ -596,7 +678,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li></ol></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -610,7 +692,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%952-1"><span class="toc-text"> 算法基础课基础算法2-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li></ol></li></ol>
     </article>
   
   
