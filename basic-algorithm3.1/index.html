@@ -49,7 +49,7 @@
         content="2023-08-03">
       <meta 
         property="og:article:modified_time" 
-        content="2023-09-06">
+        content="2023-09-15">
       <meta 
         property="og:article:author" 
         content="HawYior">
@@ -346,7 +346,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>17</span>
+    <span>18</span>
     <span>文章</span>
   </a>
   <a 
@@ -422,7 +422,7 @@
       <a href="/categories/%E7%AE%97%E6%B3%95/">
         <div class="categories-list-item">
           算法
-          <span class="categories-list-item-badge">13</span>
+          <span class="categories-list-item-badge">14</span>
         </div>
       </a>
     
@@ -489,7 +489,7 @@
     
     
       <span class="dot"></span>
-      <span>578 字</span>
+      <span>673 字</span>
     
   </div>
   
@@ -511,6 +511,15 @@
 <p><strong>回溯、剪枝</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2089">烤鸡</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5908">猫猫和企鹅</a></p>
+<p>在矩阵中4个方向遍历</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> dx<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>y <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>防止走相反的方向导致搜索回溯</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token number">2</span> <span class="token operator">==</span> d<span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>8个方向遍历</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> dx<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> dy<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>防止走相反的方向导致搜索回溯</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token number">4</span> <span class="token operator">==</span> d<span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="树和图的存储"><a class="markdownIt-Anchor" href="#树和图的存储"></a> 树和图的存储</h3>
 <p>树是特殊的无环连通图</p>
 <p><strong>有向图<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \to b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span></strong></p>
@@ -686,6 +695,11 @@ q<span class="token punctuation">.</span><span class="token function">push</span
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-13</div>
+        <a href="/basic-algorithm5.2/"><div class="recent-posts-item-content">算法基础课基础算法5-2</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-09-12</div>
         <a href="/basic-algorithm5.1/"><div class="recent-posts-item-content">算法基础课基础算法5-1</div></a>
       </div>
@@ -698,11 +712,6 @@ q<span class="token punctuation">.</span><span class="token function">push</span
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-09-08</div>
         <a href="/basic-algorithm4.2/"><div class="recent-posts-item-content">算法基础课基础算法4-2</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-09-07</div>
-        <a href="/basic-algorithm4.1/"><div class="recent-posts-item-content">算法基础课基础算法4-1</div></a>
       </div>
     
   </div>
