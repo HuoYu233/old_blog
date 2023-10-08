@@ -49,7 +49,7 @@
         content="2023-05-27">
       <meta 
         property="og:article:modified_time" 
-        content="2023-08-28">
+        content="2023-10-08">
       <meta 
         property="og:article:author" 
         content="HawYior">
@@ -346,13 +346,13 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>18</span>
+    <span>19</span>
     <span>文章</span>
   </a>
   <a 
     class="author-categories-count" 
     href="/categories">
-    <span>4</span>
+    <span>3</span>
     <span>分类</span>
   </a>
   <a 
@@ -422,14 +422,7 @@
       <a href="/categories/%E7%AE%97%E6%B3%95/">
         <div class="categories-list-item">
           算法
-          <span class="categories-list-item-badge">14</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E6%95%99%E7%A8%8B/">
-        <div class="categories-list-item">
-          教程
-          <span class="categories-list-item-badge">1</span>
+          <span class="categories-list-item-badge">15</span>
         </div>
       </a>
     
@@ -489,7 +482,7 @@
     
     
       <span class="dot"></span>
-      <span>1.1k 字</span>
+      <span>1.2k 字</span>
     
   </div>
   
@@ -579,6 +572,27 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
     <span class="token keyword">while</span> <span class="token punctuation">(</span>C<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> C<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> C<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> C<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>高精度乘以高精度</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cin<span class="token operator">>></span>a1<span class="token operator">>></span>b1<span class="token punctuation">;</span>
+   <span class="token keyword">int</span> lena<span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> lenb<span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span>b1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>lena<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>a1<span class="token punctuation">[</span>lena<span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token char">'0'</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>lenb<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>b1<span class="token punctuation">[</span>lenb<span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token char">'0'</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>lenb<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>lena<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+		c<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">*</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>lena<span class="token operator">+</span>lenb<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">9</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		c<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+=</span>c<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
+		c<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">%=</span><span class="token number">10</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+len<span class="token operator">=</span>lena<span class="token operator">+</span>lenb<span class="token punctuation">;</span>
+   <span class="token keyword">while</span><span class="token punctuation">(</span>c<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token operator">&amp;&amp;</span>len<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span>len<span class="token operator">--</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1601">A+B Problem(高精)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1303">A*B Problem(高精)</a></p>
 <h2 id="前缀和与差分"><a class="markdownIt-Anchor" href="#前缀和与差分"></a> 前缀和与差分</h2>
 <p>一对逆运算</p>
 <h3 id="一维前缀和"><a class="markdownIt-Anchor" href="#一维前缀和"></a> 一维前缀和</h3>
@@ -755,6 +769,11 @@ b_n=a_n-a_{n-1}
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-09-23</div>
+        <a href="/basic-algorithm6.1/"><div class="recent-posts-item-content">算法基础课基础算法6-1</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-09-13</div>
         <a href="/basic-algorithm5.2/"><div class="recent-posts-item-content">算法基础课基础算法5-2</div></a>
       </div>
@@ -767,11 +786,6 @@ b_n=a_n-a_{n-1}
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-09-09</div>
         <a href="/basic-algorithm4.3/"><div class="recent-posts-item-content">算法基础课基础算法4-3</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-09-08</div>
-        <a href="/basic-algorithm4.2/"><div class="recent-posts-item-content">算法基础课基础算法4-2</div></a>
       </div>
     
   </div>
