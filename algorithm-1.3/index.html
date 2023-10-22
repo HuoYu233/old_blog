@@ -49,7 +49,7 @@
         content="2023-06-27">
       <meta 
         property="og:article:modified_time" 
-        content="2023-10-12">
+        content="2023-10-15">
       <meta 
         property="og:article:author" 
         content="HawYior">
@@ -346,7 +346,7 @@
   <a 
     class="author-posts-count" 
     href="/archives">
-    <span>17</span>
+    <span>18</span>
     <span>文章</span>
   </a>
   <a 
@@ -422,7 +422,7 @@
       <a href="/categories/%E7%AE%97%E6%B3%95/">
         <div class="categories-list-item">
           算法
-          <span class="categories-list-item-badge">13</span>
+          <span class="categories-list-item-badge">14</span>
         </div>
       </a>
     
@@ -489,7 +489,7 @@
     
     
       <span class="dot"></span>
-      <span>679 字</span>
+      <span>537 字</span>
     
   </div>
   
@@ -509,7 +509,7 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>核心思想</strong></p>
 <p>复杂度由<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>优化到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
-<p>先想出朴素做法，寻找i与j之间的关系，进行双指针优化</p>
+<p>先想出朴素做法，寻找i与j之间的关系，是否有单调性，进行双指针优化</p>
 <h2 id="位运算"><a class="markdownIt-Anchor" href="#位运算"></a> 位运算</h2>
 <ul>
 <li>n的二进制表示中第k位数字是几</li>
@@ -593,49 +593,6 @@ alls<span class="token punctuation">.</span><span class="token function">erase</
 
     segs <span class="token operator">=</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在Java中可以自定义类来实现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>I</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">PII</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span></p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">U</span><span class="token punctuation">,</span> <span class="token class-name">V</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">U</span> first<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token class-name">V</span> second<span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span><span class="token class-name">U</span> first<span class="token punctuation">,</span> <span class="token class-name">V</span> second<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> first<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>second <span class="token operator">=</span> second<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> o<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token punctuation">></span></span> pair <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> o<span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>first<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>pair<span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> second<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>pair<span class="token punctuation">.</span>second<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token number">31</span> <span class="token operator">*</span> first<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> second<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token string">"("</span> <span class="token operator">+</span> first <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> second <span class="token operator">+</span> <span class="token string">")"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">U</span><span class="token punctuation">,</span> <span class="token class-name">V</span><span class="token punctuation">></span></span> <span class="token class-name">Pair</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">U</span><span class="token punctuation">,</span> <span class="token class-name">V</span><span class="token punctuation">></span></span> <span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">U</span> a<span class="token punctuation">,</span> <span class="token class-name">V</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以直接用<code>int[]</code>，用前两位数<code>&#123;first,second&#125;</code>代替<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>I</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">PII</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span></p>
 
   </div>
   <div>
@@ -713,6 +670,11 @@ alls<span class="token punctuation">.</span><span class="token function">erase</
   <div class="recent-posts-list">
     
       <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-10-22</div>
+        <a href="/algorithm-skills/"><div class="recent-posts-item-content">由数据范围反推时间复杂度及算法</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-10-15</div>
         <a href="/paper-deep-learning-detect-BOD5/"><div class="recent-posts-item-content">基于深度学习的城市港口水体BOD5稀疏矩阵软检测</div></a>
       </div>
@@ -725,11 +687,6 @@ alls<span class="token punctuation">.</span><span class="token function">erase</
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2023-09-13</div>
         <a href="/algorithm-dp/"><div class="recent-posts-item-content">dp问题合集</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-09-12</div>
-        <a href="/algorithm-knapsack-problem/"><div class="recent-posts-item-content">背包问题算法</div></a>
       </div>
     
   </div>
