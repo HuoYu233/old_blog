@@ -1,517 +1,102 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-  <meta charset="UTF-8">
-  <meta 
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <meta 
-    http-equiv="X-UA-Compatible" 
-    content="ie=edge">
-  <meta 
-    name="theme-color" 
-    content="#fff" 
-    id="theme-color">
-  <meta 
-    name="description" 
-    content="HawYiorの博客">
-  <link 
-    rel="icon" 
-    href="/img/logo.png">
-  <title>算法基础数据结构</title>
-  
-    
-      <meta 
-        property="og:title" 
-        content="算法基础数据结构">
-    
-    
-      <meta 
-        property="og:url" 
-        content="http://huoyu233.github.io/algorithm-data-struct/index.html">
-    
-    
-      <meta 
-        property="og:img" 
-        content="https://s2.loli.net/2023/06/30/ZaYTkMoEQ14hpBz.jpg">
-    
-    
-      <meta 
-        property="og:img" 
-        content="链表、栈与队列、KMP、Trie树、并查集、堆">
-    
-    
-      <meta 
-        property="og:type" 
-        content="article">
-      <meta 
-        property="og:article:published_time" 
-        content="2023-07-07">
-      <meta 
-        property="og:article:modified_time" 
-        content="2023-10-31">
-      <meta 
-        property="og:article:author" 
-        content="HawYior">
-      
-        
-      
-    
+<html>
+<head>
+  <meta charset="utf-8">
   
   
-  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
-  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
-  <link rel="preload" href="/css/main.css" as="style" >
+  <title>算法基础数据结构 | HawYiorのBlog</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="modulepreload" href="//instant.page/5.1.0">
-  
-  <link rel="stylesheet" href="/css/main.css">
-  
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
-  
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  <meta name="description" content="链表、栈与队列、KMP、Trie树、并查集、堆">
   
   
   
-    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+    <link rel="shortcut icon" href="/logo.png">
   
-  <script>
-    function loadScript(url, cb) {
-      var script = document.createElement('script');
-      script.src = url;
-      if (cb) script.onload = cb;
-      script.async = true;
-      document.body.appendChild(script);
-    }
-    function loadCSS(href, data, attr) {
-      var sheet = document.createElement('link');
-      sheet.ref = 'stylesheet';
-      sheet.href = href;
-      sheet.dataset[data] = attr;
-      document.head.appendChild(sheet);
-    }
-    function changeCSS(cssFile, data, attr) {
-      var oldlink = document.querySelector(data);
-      var newlink = document.createElement("link");
-      newlink.setAttribute("rel", "stylesheet");
-      newlink.setAttribute("href", cssFile);
-      newlink.dataset.prism = attr;
-      document.head.replaceChild(newlink, oldlink);
-    }
-  </script>
+  <link rel="stylesheet" href="/css/style.css">
   
-    
-      
-      
-      
-      
-        
-        
-        
-        <script>
-          function prismThemeChange() {
-            if(document.getElementById('theme-color').dataset.mode === 'dark') {
-              if(document.querySelector('[data-prism]')) {
-                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
-              } else {
-                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
-              }
-            } else {
-              if(document.querySelector('[data-prism]')) {
-                changeCSS('/js/lib/prism/prism-tomorrow.min.css', '[data-prism]', 'prism-tomorrow');
-              } else {
-                loadCSS('/js/lib/prism/prism-tomorrow.min.css', 'prism', 'prism-tomorrow');
-              }
-            }
-          }
-          prismThemeChange()
-        </script>
-      
-      
-        
-        <link rel="stylesheet" href="/js/lib/prism/prism-line-numbers.min.css">
-      
-    
-  
-  <script>
-    // control reverse button
-    var reverseDarkList = {
-      dark: 'light',
-      light: 'dark'
-    };
-    var themeColor = {
-      dark: '#1c1c1e',
-      light: '#fff'
-    }
-    // get the data of css prefers-color-scheme
-    var getCssMediaQuery = function() {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-    // reverse current darkmode setting function
-    var reverseDarkModeSetting = function() {
-      var setting = localStorage.getItem('user-color-scheme');
-      if(reverseDarkList[setting]) {
-        setting = reverseDarkList[setting];
-      } else if(setting === null) {
-        setting = reverseDarkList[getCssMediaQuery()];
-      } else {
-        return;
-      }
-      localStorage.setItem('user-color-scheme', setting);
-      return setting;
-    };
-    // apply current darkmode setting
-  </script>
-  
-    <script>
-      var setDarkmode = function(mode) {
-      var setting = mode || localStorage.getItem('user-color-scheme');
-      if(setting === getCssMediaQuery()) {
-        document.documentElement.removeAttribute('data-user-color-scheme');
-        localStorage.removeItem('user-color-scheme');
-        document.getElementById('theme-color').content = themeColor[setting];
-        document.getElementById('theme-color').dataset.mode = setting;
-        prismThemeChange();
-      } else if(reverseDarkList[setting]) {
-        document.documentElement.setAttribute('data-user-color-scheme', setting);
-        document.getElementById('theme-color').content = themeColor[setting];
-        document.getElementById('theme-color').dataset.mode = setting;
-        prismThemeChange();
-      } else {
-        document.documentElement.removeAttribute('data-user-color-scheme');
-        localStorage.removeItem('user-color-scheme');
-        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
-        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
-        prismThemeChange();
-      }
-    };
-    setDarkmode();
-    </script>
-  
-  
-  
-    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
-    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
-  
-  
-    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
-  
-  
-  
-    
-    <link rel="prefetch" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" as="script">
-  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
   
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-  <body>
-    <div class="wrapper">
-       
-      <nav class="navbar">
-  <div class="navbar-logo">
-    <a class="navbar-logo-main" href="/">
-      
-        <img 
-          class="navbar-logo-img"
-          width="32"
-          height="32"
-          src="/img/logo.png" 
-          alt="blog logo">
-      
-      <span class="navbar-logo-dsc">HawYiorのBlog</span>
-      </a>
-  </div>
-  <div class="navbar-menu">
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
     
-      <a 
-        href="/" 
-        class="navbar-menu-item">
-        
-          首页
-        
-      </a>
+      <a class="main-nav-link" href="/">Home</a>
     
-      <a 
-        href="/archives" 
-        class="navbar-menu-item">
-        
-          归档
-        
-      </a>
+      <a class="main-nav-link" href="/archives">Archives</a>
     
-      <a 
-        href="/tags" 
-        class="navbar-menu-item">
-        
-          标签
-        
-      </a>
+      <a class="main-nav-link" href="/about">About</a>
     
-      <a 
-        href="/categories" 
-        class="navbar-menu-item">
-        
-          分类
-        
-      </a>
+      <a class="main-nav-link" href="/tools">Tools</a>
     
-      <a 
-        href="/about" 
-        class="navbar-menu-item">
-        
-          关于
-        
-      </a>
+      <a class="main-nav-link" href="/log">Log</a>
     
-      <a 
-        href="/links" 
-        class="navbar-menu-item">
-        
-          友链
-        
-      </a>
+    <div class="main-nav-space-between"></div>
     
-      <a 
-        href="/tools" 
-        class="navbar-menu-item">
-        
-          资源
-        
-      </a>
-    
-      <a 
-        href="/log" 
-        class="navbar-menu-item">
-        
-          日志
-        
-      </a>
-    
-    <button 
-      class="navbar-menu-item darknavbar navbar-menu-btn" 
-      aria-label="Toggle dark mode"
-      id="dark">
-      <i class="iconfont icon-weather"></i>
-    </button>
-    <button 
-      class="navbar-menu-item searchnavbar navbar-menu-btn" 
-      aria-label="Toggle search"
-      id="search">
-      <!-- <i 
-        class="iconfont icon-search" 
-        style="font-size: 1.2rem; font-weight: 400;">
-      </i> -->
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
-        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
-          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
-        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
-          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
-          d="M283.64 283.64L336 336"></path>
-      </svg>
-    </button>
-  </div>
-</nav> 
-      
-      <div 
-        id="local-search" 
-        style="display: none">
-        <input
-          class="navbar-menu-item"
-          id="search-input"
-          placeholder="请输入搜索内容..." />
-        <div id="search-content"></div>
-      </div>
-      
-      <div class="section-wrap">
-        <div class="container">
-          <div class="columns">
-            <aside class="left-column">
-              
-              <div class="card card-author">
-                
-  <img 
-    src="https://s2.loli.net/2023/06/30/ZaYTkMoEQ14hpBz.jpg" 
-    class="author-img"
-    width="88"
-    height="88"
-    alt="author avatar">
-
-<p class="author-name">HawYior</p>
-<p class="author-description">嘻嘻</p>
-<div class="author-message">
-  <a 
-    class="author-posts-count" 
-    href="/archives">
-    <span>19</span>
-    <span>文章</span>
-  </a>
-  <a 
-    class="author-categories-count" 
-    href="/categories">
-    <span>5</span>
-    <span>分类</span>
-  </a>
-  <a 
-    class="author-tags-count" 
-    href="/tags">
-    <span>0</span>
-    <span>标签</span>
-  </a>
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">HawYiorのBlog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="/" id="subtitle">we are here to code the world</a>
+    </h2>
+  
 </div>
 
-  <div class="author-card-society">
+      <div id="content" class="outer">
+        <section id="main"><article id="post-algorithm-data-struct" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/algorithm-data-struct/" class="article-date">
+  <time class="dt-published" datetime="2023-07-07T07:23:21.000Z" itemprop="datePublished">2023-07-07</time>
+</a>
     
-      <div class="author-card-society-icon">
-        <a target="_blank" rel="noopener" href="https://weibo.com/u/5859132624">
-          <i class="iconfont icon-sina society-icon"></i>
-        </a>
-      </div>
-    
-      <div class="author-card-society-icon">
-        <a target="_blank" rel="noopener" href="https://space.bilibili.com/82505737">
-          <i class="iconfont icon-bilibili society-icon"></i>
-        </a>
-      </div>
-    
-      <div class="author-card-society-icon">
-        <a target="_blank" rel="noopener" href="https://github.com/HuoYu233">
-          <i class="iconfont icon-github society-icon"></i>
-        </a>
-      </div>
-    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
   </div>
 
-              </div>
-               <div class="sticky-tablet">
-  
-  
-    <article class="display-when-two-columns spacer">
-      <div class="card card-content toc-card">
-        <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trie%E6%A0%91"><span class="toc-text"> Trie树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-text"> 并查集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text"> 堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text"> 哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text"> 存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-text"> 字符串哈希</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-stl"><span class="toc-text"> C++ STL</span></a></li></ol>
-      </div>
-    </article>
-  
-  
-  <article class="card card-content categories-widget">
-    <div class="categories-card">
-  <div class="categories-header">
-    <i 
-      class="iconfont icon-fenlei" 
-      style="padding-right: 2px;">
-    </i>分类
   </div>
-  <div class="categories-list">
+  <div class="article-inner">
     
-      <a href="/categories/%E9%97%B2%E8%81%8A/">
-        <div class="categories-list-item">
-          闲聊
-          <span class="categories-list-item-badge">2</span>
-        </div>
-      </a>
     
-      <a href="/categories/%E7%AE%97%E6%B3%95/">
-        <div class="categories-list-item">
-          算法
-          <span class="categories-list-item-badge">14</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
-        <div class="categories-list-item">
-          计算机基础
-          <span class="categories-list-item-badge">1</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E8%AE%BA%E6%96%87/">
-        <div class="categories-list-item">
-          论文
-          <span class="categories-list-item-badge">1</span>
-        </div>
-      </a>
-    
-      <a href="/categories/%E5%89%8D%E7%AB%AF/">
-        <div class="categories-list-item">
-          前端
-          <span class="categories-list-item-badge">1</span>
-        </div>
-      </a>
-    
-  </div>
-</div>
-  </article>
+      <header class="article-header">
+        
   
-  <article class="card card-content tags-widget">
-    <div class="tags-card">
-  <div class="tags-header">
-    <i 
-      class="iconfont icon-biaoqian" 
-      style="padding-right: 2px;">
-    </i>热门标签
-  </div>
-  <div class="tags-list">
-    
-  </div>
-</div>
-  </article>
-  
-  
-</div>
-            </aside>
-            <main class="main-column">
-              
-<article class="card card-content">
-  <header>
-    <h1 class="post-title">
+    <h1 class="p-name article-title" itemprop="headline name">
       算法基础数据结构
     </h1>
-  </header>
-  <div class="post-meta post-show-meta">
-    <time datetime="2023-07-07T07:23:21.000Z">
-      <i 
-        class="iconfont icon-calendar" 
-        style="margin-right: 2px;">
-      </i>
-      <span>2023-07-07</span>
-    </time>
-    
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/%E7%AE%97%E6%B3%95/" 
-          class="post-meta-link">
-          算法
-        </a>
-      
-    
-    
-      <span class="dot"></span>
-      <span>3k 字</span>
-    
-  </div>
   
-  </header>
-  <div 
-    id="section" 
-    class="post-content">
-    <h2 id="链表与邻接表"><a class="markdownIt-Anchor" href="#链表与邻接表"></a> 链表与邻接表</h2>
-<p>由于用<code>结构体+指针</code>比较慢，一般在面试题使用，在这里使用<strong>数组</strong>模拟链表</p>
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-number">4.</span> <span class="toc-text">单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-number">5.</span> <span class="toc-text">单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-number">6.</span> <span class="toc-text">KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trie%E6%A0%91"><span class="toc-number">7.</span> <span class="toc-text">Trie树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">并查集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-number">9.</span> <span class="toc-text">堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">heap[k] &#x3D; x;down[k];up[k]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">11.</span> <span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">11.1.</span> <span class="toc-text">存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-number">11.2.</span> <span class="toc-text">字符串哈希</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c++-stl"><span class="toc-number">12.</span> <span class="toc-text">C++ STL</span></a></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="链表与邻接表">链表与邻接表</h2>
+<p>由于用<code>结构体+指针</code>比较慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一般在面试题使用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在这里使用<strong>数组</strong>模拟链表</p>
 <ul>
 <li>单链表</li>
 </ul>
-<p><code>e[N]</code>：储存链表结点的值</p>
-<p><code>ne[N]</code>：储存结点的下一个结点下标，其中空结点下标为-1</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// head存储链表头，e[]存储节点的值，ne[]存储节点的next指针，idx表示当前用到了哪个节点</span>
+<p><code>e[N]</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>储存链表结点的值</p>
+<p><code>ne[N]</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>储存结点的下一个结点下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中空结点下标为-1</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// head存储链表头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>e[]存储节点的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>ne[]存储节点的next指针<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>idx表示当前用到了哪个节点</span>
 <span class="token keyword">int</span> head<span class="token punctuation">,</span> e<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> ne<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">;</span>
 
 <span class="token comment">// 初始化</span>
@@ -533,7 +118,7 @@
     e<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">,</span> ne<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> ne<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> ne<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> idx <span class="token operator">++</span> <span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token comment">// 将头结点删除，需要保证头结点存在</span>
+<span class="token comment">// 将头结点删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要保证头结点存在</span>
 <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     head <span class="token operator">=</span> ne<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -547,14 +132,14 @@
 <ul>
 <li>双链表</li>
 </ul>
-<p>作用：优化某些问题</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前用到了哪个节点</span>
+<p>作用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>优化某些问题</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// e[]表示节点的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>l[]表示节点的左指针<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>r[]表示节点的右指针<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>idx表示当前用到了哪个节点</span>
 <span class="token keyword">int</span> e<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> l<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> r<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">;</span>
 
 <span class="token comment">// 初始化</span>
 <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-    <span class="token comment">//0是左端点，1是右端点</span>
+    <span class="token comment">//0是左端点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>1是右端点</span>
     r<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     idx <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
@@ -576,8 +161,8 @@
 <ul>
 <li>邻接表</li>
 </ul>
-<p>N个单链表，用于存储树和图</p>
-<h2 id="栈"><a class="markdownIt-Anchor" href="#栈"></a> 栈</h2>
+<p>N个单链表<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用于存储树和图</p>
+<h2 id="栈">栈</h2>
 <p>先进后出(FILO)</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// tt表示栈顶</span>
 <span class="token keyword">int</span> stk<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -591,7 +176,7 @@ tt <span class="token operator">--</span> <span class="token punctuation">;</spa
 <span class="token comment">// 栈顶的值</span>
 stk<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token comment">// 判断栈是否为空，如果 tt > 0，则表示不为空</span>
+<span class="token comment">// 判断栈是否为空<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 tt > 0<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则表示不为空</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>tt <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
 	<span class="token operator">not</span> empty
@@ -599,9 +184,9 @@ stk<span class="token punctuation">[</span>tt<span class="token punctuation">]</
 <span class="token punctuation">&#123;</span>
     empty
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="队列"><a class="markdownIt-Anchor" href="#队列"></a> 队列</h2>
+<h2 id="队列">队列</h2>
 <p>先进先出(FIFO)</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头，tt表示队尾</span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>tt表示队尾</span>
 <span class="token keyword">int</span> q<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 向队尾插入一个数</span>
@@ -613,13 +198,13 @@ hh <span class="token operator">++</span> <span class="token punctuation">;</spa
 <span class="token comment">// 队头的值</span>
 q<span class="token punctuation">[</span>hh<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token comment">// 判断队列是否为空，如果 hh &lt;= tt，则表示不为空</span>
+<span class="token comment">// 判断队列是否为空<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果 hh &lt;= tt<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则表示不为空</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>hh <span class="token operator">&lt;=</span> tt<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>循环队列</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头，tt表示队尾的后一个位置</span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// hh 表示队头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>tt表示队尾的后一个位置</span>
 <span class="token keyword">int</span> q<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 向队尾插入一个数</span>
@@ -633,21 +218,21 @@ hh <span class="token operator">++</span> <span class="token punctuation">;</spa
 <span class="token comment">// 队头的值</span>
 q<span class="token punctuation">[</span>hh<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token comment">// 判断队列是否为空，如果hh != tt，则表示不为空</span>
+<span class="token comment">// 判断队列是否为空<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果hh != tt<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则表示不为空</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>hh <span class="token operator">!=</span> tt<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="单调栈"><a class="markdownIt-Anchor" href="#单调栈"></a> 单调栈</h2>
-<p>题型：求给定序列每一个数左/右边离他最近的比他大/小的数</p>
+<h2 id="单调栈">单调栈</h2>
+<p>题型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>求给定序列每一个数左/右边离他最近的比他大/小的数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> tt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span>tt <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>stk<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> tt <span class="token operator">--</span> <span class="token punctuation">;</span>
     stk<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="单调队列"><a class="markdownIt-Anchor" href="#单调队列"></a> 单调队列</h2>
-<p>题型：求滑动窗口的最大/小值</p>
+<h2 id="单调队列">单调队列</h2>
+<p>题型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>求滑动窗口的最大/小值</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> hh <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> tt <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
@@ -655,10 +240,10 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
     <span class="token keyword">while</span> <span class="token punctuation">(</span>hh <span class="token operator">&lt;=</span> tt <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>q<span class="token punctuation">[</span>tt<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> tt <span class="token operator">--</span> <span class="token punctuation">;</span>
     q<span class="token punctuation">[</span> <span class="token operator">++</span> tt<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="kmp"><a class="markdownIt-Anchor" href="#kmp"></a> KMP</h2>
-<p>对于字符串<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">s</span></span></span></span>,判断是否包含模式串<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// s[]是长文本，p[]是模式串，n是s的长度，m是p的长度</span>
-<span class="token comment">//求模式串的Next数组：</span>
+<h2 id="kmp">KMP</h2>
+<p>对于字符串<span class="markdown-them-math-inline">$s$</span>,判断是否包含模式串<span class="markdown-them-math-inline">$t$</span></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// s[]是长文本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>p[]是模式串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>n是s的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>m是p的长度</span>
+<span class="token comment">//求模式串的Next数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> p<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> ne<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -677,10 +262,10 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
         <span class="token comment">// 匹配成功后的逻辑</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="trie树"><a class="markdownIt-Anchor" href="#trie树"></a> Trie树</h2>
+<h2 id="trie树">Trie树</h2>
 <p>快速存储和查找字符串集合的数据结构</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> son<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cnt<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">;</span>
-<span class="token comment">// 0号点既是根节点，又是空节点</span>
+<span class="token comment">// 0号点既是根节点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又是空节点</span>
 <span class="token comment">// son[][]存储树中每个节点的子节点</span>
 <span class="token comment">// cnt[]存储以每个节点结尾的单词数量</span>
 
@@ -711,27 +296,27 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/145/">最大异或对</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/144/">前缀统计</a></p>
-<h2 id="并查集"><a class="markdownIt-Anchor" href="#并查集"></a> 并查集</h2>
+<h2 id="并查集">并查集</h2>
 <ol>
 <li>将两个集合合并</li>
 <li>询问两个元素是否在一个集合当中</li>
 </ol>
-<p>近乎<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
-<p>基本原理：每一个集合用一棵树表示，树根的编号就是整个集合的编号。每个节点存储它的父节点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">p[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span></span></span></span>表示<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>的父节点</p>
+<p>近乎<span class="markdown-them-math-inline">$O(1)$</span></p>
+<p>基本原理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>每一个集合用一棵树表示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>树根的编号就是整个集合的编号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>每个节点存储它的父节点<span class="markdown-them-math-inline">$p[x]$</span>表示<span class="markdown-them-math-inline">$x$</span>的父节点</p>
 <ul>
-<li>如何判断是树根？</li>
+<li>如何判断是树根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span></li>
 </ul>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">p[x] = x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span></p>
+<p><span class="markdown-them-math-inline">$p[x] = x$</span></p>
 <ul>
-<li>如何求<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>的集合编号</li>
+<li>如何求<span class="markdown-them-math-inline">$x$</span>的集合编号</li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">!=</span>x<span class="token punctuation">)</span> x <span class="token operator">=</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>如何合并两个区间</li>
 </ul>
-<p>设p[x]为x集合编号，p[y]是y集合编号。p[x]=y</p>
-<p>优化：路径压缩，先搜索一遍，再将节点的父节点直接指向树根</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>朴素并查集：
+<p>设p[x]为x集合编号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>p[y]是y集合编号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>p[x]=y</p>
+<p>优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>路径压缩<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>先搜索一遍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>再将节点的父节点直接指向树根</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>朴素并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>
 
     <span class="token keyword">int</span> p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//存储每个点的祖宗节点</span>
 
@@ -742,17 +327,17 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
         <span class="token keyword">return</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 初始化，假定节点编号是1~n</span>
+    <span class="token comment">// 初始化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假定节点编号是1~n</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
 
-    <span class="token comment">// 合并a和b所在的两个集合：</span>
+    <span class="token comment">// 合并a和b所在的两个集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></span>
     p<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>维护size的并查集：
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>维护size的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>
 
     <span class="token keyword">int</span> p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> size<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token comment">//p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义，表示祖宗节点所在集合中的点的数量</span>
+    <span class="token comment">//p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>表示祖宗节点所在集合中的点的数量</span>
 
     <span class="token comment">// 返回x的祖宗节点</span>
     <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
@@ -761,19 +346,19 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
         <span class="token keyword">return</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 初始化，假定节点编号是1~n</span>
+    <span class="token comment">// 初始化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假定节点编号是1~n</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
     <span class="token punctuation">&#123;</span>
         p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
         size<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 合并a和b所在的两个集合：</span>
+    <span class="token comment">// 合并a和b所在的两个集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></span>
     size<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+=</span> size<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     p<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>维护到祖宗节点距离的并查集：
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>维护到祖宗节点距离的并查集<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>
 
     <span class="token keyword">int</span> p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token comment">//p[]存储每个点的祖宗节点, d[x]存储x到p[x]的距离</span>
@@ -790,21 +375,21 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
         <span class="token keyword">return</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 初始化，假定节点编号是1~n</span>
+    <span class="token comment">// 初始化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假定节点编号是1~n</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
     <span class="token punctuation">&#123;</span>
         p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
         d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 合并a和b所在的两个集合：</span>
+    <span class="token comment">// 合并a和b所在的两个集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></span>
     p<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    d<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> distance<span class="token punctuation">;</span> <span class="token comment">// 根据具体问题，初始化find(a)的偏移量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3367">【模版】并查集</a></p>
+    d<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> distance<span class="token punctuation">;</span> <span class="token comment">// 根据具体问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>初始化find(a)的偏移量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3367"><span class="bd-box"><h-char class="bd bd-end"><h-inner>【</h-inner></h-char></span>模版<span class="bd-box"><h-char class="bd bd-beg"><h-inner>】</h-inner></h-char></span>并查集</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/242/">食物链</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/3065#problems">并查集题单</a></p>
-<h2 id="堆"><a class="markdownIt-Anchor" href="#堆"></a> 堆</h2>
-<p>如何手写一个堆？</p>
+<h2 id="堆">堆</h2>
+<p>如何手写一个堆<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span></p>
 <ol>
 <li>插入一个数</li>
 <li>求集合中的最小值</li>
@@ -814,21 +399,20 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 </ol>
 <p><strong>STL自带堆没有实现</strong></p>
 <p>是一个完全二叉树</p>
-<p>小根堆：根小于等于左右孩子的值</p>
-<p>存储：一维数组，对于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>，左孩子<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>i</mi></mrow><annotation encoding="application/x-tex">2i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord mathnormal">i</span></span></span></span>，右孩子<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<p>借助<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>o</mi><mi>w</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">down(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">up(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>函数实现上述五种操作</p>
+<p>小根堆<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>根小于等于左右孩子的值</p>
+<p>存储<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>一维数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于<span class="markdown-them-math-inline">$i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>左孩子<span class="markdown-them-math-inline">$2i$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>右孩子<span class="markdown-them-math-inline">$2i+1$</span></p>
+<p>借助<span class="markdown-them-math-inline">$down(x)$</span> 与 <span class="markdown-them-math-inline">$up(x)$</span>函数实现上述五种操作</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span><span class="token operator">++</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span><span class="token function">up</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> heap<span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>size<span class="token operator">--</span><span class="token punctuation">;</span><span class="token function">down</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> heap<span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>size<span class="token operator">--</span><span class="token punctuation">;</span><span class="token function">down</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">up</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>down<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>up<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<hr />
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// h[N]存储堆中的值, h[1]是堆顶，x的左儿子是2x, 右儿子是2x + 1</span>
+<h2 id=""><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">heap<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>down<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>up<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// h[N]存储堆中的值, h[1]是堆顶<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>x的左儿子是2x, 右儿子是2x + 1</span>
 <span class="token comment">// ph[k]存储第k个插入的点在堆中的位置</span>
 <span class="token comment">// hp[k]存储堆中下标是k的点是第几个插入的</span>
 <span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> ph<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> hp<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> size<span class="token punctuation">;</span>
 
-<span class="token comment">// 交换两个点，及其映射关系</span>
+<span class="token comment">// 交换两个点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>及其映射关系</span>
 <span class="token keyword">void</span> <span class="token function">heap_swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token function">swap</span><span class="token punctuation">(</span>ph<span class="token punctuation">[</span>hp<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>ph<span class="token punctuation">[</span>hp<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -859,18 +443,18 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 
 <span class="token comment">// O(n)建堆</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token punctuation">;</span> i <span class="token operator">--</span> <span class="token punctuation">)</span> <span class="token function">down</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>包含映射的堆不常用，在dijkstra算法中应用</p>
-<h2 id="哈希表"><a class="markdownIt-Anchor" href="#哈希表"></a> 哈希表</h2>
-<h3 id="存储结构"><a class="markdownIt-Anchor" href="#存储结构"></a> 存储结构</h3>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>将大范围数映射到小范围值域（离散化是特殊的hash方式）</p>
+<p>包含映射的堆不常用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在dijkstra算法中应用</p>
+<h2 id="哈希表">哈希表</h2>
+<h3 id="存储结构">存储结构</h3>
+<p><span class="markdown-them-math-inline">$O(1)$</span>将大范围数映射到小范围值域<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>离散化是特殊的hash方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mspace></mspace><mspace width="0.6666666666666666em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mtext> </mtext><mi>r</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">x\mod\ range</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6666666666666666em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span></span></span></span></li>
+<li><span class="markdown-them-math-inline">$x\mod\ range$</span></li>
 <li>处理冲突</li>
 </ul>
 <ol>
 <li>拉链法</li>
 </ol>
-<p>创建一维数组存储所有哈希值，若不同元素对应同一个哈希值，则在该值拉链下来(链表)</p>
+<p>创建一维数组存储所有哈希值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若不同元素对应同一个哈希值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则在该值拉链下来(链表)</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> e<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> ne<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">;</span>
 
     <span class="token comment">// 向哈希表中插入一个数</span>
@@ -895,11 +479,11 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 <ol start="2">
 <li>开放寻址法</li>
 </ol>
-<p>只开辟一个一维数组，经验长度为题目范围的2-3倍</p>
-<p>若应该放入的位置已经有元素，则寻找下一个可以存入的位置</p>
+<p>只开辟一个一维数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经验长度为题目范围的2-3倍</p>
+<p>若应该放入的位置已经有元素<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则寻找下一个可以存入的位置</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-   <span class="token comment">// 如果x在哈希表中，返回x的下标；如果x不在哈希表中，返回x应该插入的位置</span>
+   <span class="token comment">// 如果x在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x的下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>如果x不在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x应该插入的位置</span>
    <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
    <span class="token punctuation">&#123;</span>
        <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span>
@@ -910,10 +494,10 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
        <span class="token punctuation">&#125;</span>
        <span class="token keyword">return</span> t<span class="token punctuation">;</span>
    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>l</mi><mi>l</mi><mo>=</mo><mn>0</mn><mi>x</mi><mn>3</mn><mi>f</mi><mn>3</mn><mi>f</mi><mn>3</mn><mi>f</mi><mn>3</mn><mi>f</mi></mrow><annotation encoding="application/x-tex">null = 0x3f3f3f3f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mord mathnormal">x</span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></p>
-<h3 id="字符串哈希"><a class="markdownIt-Anchor" href="#字符串哈希"></a> 字符串哈希</h3>
-<p>将字符串看成P进制数，P的经验值是131或13331，取这两个值的冲突概率低<br />
-小技巧：取模的数用2^64，这样直接用unsigned long long存储，溢出的结果就是取模的结果</p>
+<p>其中<span class="markdown-them-math-inline">$null = 0x3f3f3f3f$</span></p>
+<h3 id="字符串哈希">字符串哈希</h3>
+<p>将字符串看成P进制数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>P的经验值是131或13331<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取这两个值的冲突概率低<br>
+小技巧<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>取模的数用2^64<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样直接用unsigned long long存储<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>溢出的结果就是取模的结果</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ULL<span class="token punctuation">;</span>
 ULL h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// h[k]存储字符串前k个字母的哈希值, p[k]存储 P^k mod 2^64</span>
 
@@ -921,7 +505,7 @@ ULL h<span class="token punctuation">[</span>N<span class="token punctuation">]<
 p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-    h<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> h<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> P <span class="token operator">+</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//前面的值的指数阶都加一，所以要乘以P</span>
+    h<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> h<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> P <span class="token operator">+</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//前面的值的指数阶都加一<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要乘以P</span>
     p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> p<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> P<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
@@ -930,8 +514,8 @@ ULL <span class="token function">get</span><span class="token punctuation">(</sp
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> h<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">-</span> h<span class="token punctuation">[</span>l <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> p<span class="token punctuation">[</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="c-stl"><a class="markdownIt-Anchor" href="#c-stl"></a> C++ STL</h2>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token punctuation">,</span> 变长数组，倍增的思想
+<h2 id="c++-stl">C++ STL</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token punctuation">,</span> 变长数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>倍增的思想
     <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回元素个数
     <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回是否为空
     <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  清空
@@ -939,18 +523,18 @@ ULL <span class="token function">get</span><span class="token punctuation">(</sp
     <span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    支持比较运算，按字典序
+    支持比较运算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>按字典序
 
 pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span>
     first<span class="token punctuation">,</span> 第一个元素
     second<span class="token punctuation">,</span> 第二个元素
-    支持比较运算，以first为第一关键字，以second为第二关键字（字典序）
+    支持比较运算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以first为第一关键字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以second为第二关键字<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>字典序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>
 
-string，字符串
+string<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>字符串
     <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回字符串长度
     <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">substr</span><span class="token punctuation">(</span>起始下标，<span class="token punctuation">(</span>子串长度<span class="token punctuation">)</span><span class="token punctuation">)</span>  返回子串
+    <span class="token function">substr</span><span class="token punctuation">(</span>起始下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="token punctuation">(</span>子串长度<span class="token punctuation">)</span><span class="token punctuation">)</span>  返回子串
     <span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回字符串所在字符数组的起始地址
 
 queue<span class="token punctuation">,</span> 队列
@@ -961,13 +545,13 @@ queue<span class="token punctuation">,</span> 队列
     <span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回队尾元素
     <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  弹出队头元素
 
-priority_queue<span class="token punctuation">,</span> 优先队列，默认是大根堆
+priority_queue<span class="token punctuation">,</span> 优先队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认是大根堆
     <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  插入一个元素
     <span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回堆顶元素
     <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  弹出堆顶元素
-    定义成小根堆的方式：priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> q<span class="token punctuation">;</span>
+    定义成小根堆的方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> q<span class="token punctuation">;</span>
 
 stack<span class="token punctuation">,</span> 栈
     <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -986,20 +570,20 @@ deque<span class="token punctuation">,</span> 双端队列
     <span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-set<span class="token punctuation">,</span> map<span class="token punctuation">,</span> multiset<span class="token punctuation">,</span> multimap<span class="token punctuation">,</span> 基于平衡二叉树（红黑树），动态维护有序序列
+set<span class="token punctuation">,</span> map<span class="token punctuation">,</span> multiset<span class="token punctuation">,</span> multimap<span class="token punctuation">,</span> 基于平衡二叉树<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>红黑树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>动态维护有序序列
     <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token operator">++</span><span class="token punctuation">,</span> <span class="token operator">--</span> 返回前驱和后继，时间复杂度 <span class="token function">O</span><span class="token punctuation">(</span>logn<span class="token punctuation">)</span>
+    <span class="token operator">++</span><span class="token punctuation">,</span> <span class="token operator">--</span> 返回前驱和后继<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>时间复杂度 <span class="token function">O</span><span class="token punctuation">(</span>logn<span class="token punctuation">)</span>
 
     set<span class="token operator">/</span>multiset
         <span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  插入一个数
         <span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  查找一个数
         <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  返回某一个数的个数
         <span class="token function">erase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 输入是一个数x，删除所有x   <span class="token function">O</span><span class="token punctuation">(</span>k <span class="token operator">+</span> logn<span class="token punctuation">)</span>
-            <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 输入一个迭代器，删除这个迭代器
+            <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 输入是一个数x<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>删除所有x   <span class="token function">O</span><span class="token punctuation">(</span>k <span class="token operator">+</span> logn<span class="token punctuation">)</span>
+            <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 输入一个迭代器<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>删除这个迭代器
         <span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">upper_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
             <span class="token function">lower_bound</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>  返回大于等于x的最小的数的迭代器
             <span class="token function">upper_bound</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>  返回大于x的最小的数的迭代器
@@ -1007,12 +591,12 @@ set<span class="token punctuation">,</span> map<span class="token punctuation">,
         <span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  插入的数是一个pair
         <span class="token function">erase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  输入的参数是pair或者迭代器
         <span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">[</span><span class="token punctuation">]</span>  注意multimap不支持此操作。 时间复杂度是 <span class="token function">O</span><span class="token punctuation">(</span>logn<span class="token punctuation">)</span>
+        <span class="token punctuation">[</span><span class="token punctuation">]</span>  注意multimap不支持此操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 时间复杂度是 <span class="token function">O</span><span class="token punctuation">(</span>logn<span class="token punctuation">)</span>
         <span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">upper_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 unordered_set<span class="token punctuation">,</span> unordered_map<span class="token punctuation">,</span> unordered_multiset<span class="token punctuation">,</span> unordered_multimap<span class="token punctuation">,</span> 哈希表
-    和上面类似，增删改查的时间复杂度是 <span class="token function">O</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    不支持 <span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">upper_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>， 迭代器的<span class="token operator">++</span>，<span class="token operator">--</span>
+    和上面类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>增删改查的时间复杂度是 <span class="token function">O</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    不支持 <span class="token function">lower_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token function">upper_bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 迭代器的<span class="token operator">++</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="token operator">--</span>
 
 bitset<span class="token punctuation">,</span> 圧位
     bitset<span class="token operator">&lt;</span><span class="token number">10000</span><span class="token operator">></span> s<span class="token punctuation">;</span>
@@ -1032,276 +616,113 @@ bitset<span class="token punctuation">,</span> 圧位
     <span class="token function">flip</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  等价于<span class="token operator">~</span>
     <span class="token function">flip</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> 把第k位取反<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  </div>
-  <div>
-    
-  </div>
-</article>
-<div class="nav">
-  
-    <div class="nav-item-prev">
-      <a 
-        href="/vue/" 
-        class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
-        <div>
-          <div class="nav-label">上一篇</div>
-          
-            <div class="nav-title">Vue学习笔记 </div>
-          
-        </div>
-      </a>
-    </div>
-  
-  
-    <div class="nav-item-next">
-      <a 
-        href="/2023%E5%B9%B4%E4%B8%AD%E9%97%B2%E8%81%8A/" 
-        class="nav-link">
-        <div>
-          <div class="nav-label">下一篇</div>
-          
-            <div class="nav-title">2023年中闲聊 </div>
-          
-        </div>
-        <i class="iconfont icon-right nav-next-icon"></i>
-      </a>
-    </div>
-  
-</div>
-
-<div 
-  class="card card-content toc-card" 
-  id="mobiletoc">
-  <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trie%E6%A0%91"><span class="toc-text"> Trie树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-text"> 并查集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text"> 堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text"> 哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text"> 存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-text"> 字符串哈希</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-stl"><span class="toc-text"> C++ STL</span></a></li></ol>
-</div>
-            </main>
-            <aside class="right-column">
-              <div class="sticky-widescreen">
-  
-  
-    <article class="card card-content toc-card">
-      <div class="toc-header">
-  <i 
-    class="iconfont icon-menu" 
-    style="padding-right: 2px;">
-  </i>目录
-</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-text"> 链表与邻接表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text"> 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text"> 单调栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text"> 单调队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmp"><span class="toc-text"> KMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trie%E6%A0%91"><span class="toc-text"> Trie树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-text"> 并查集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text"> 堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text"> 哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-text"> 存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-text"> 字符串哈希</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-stl"><span class="toc-text"> C++ STL</span></a></li></ol>
-    </article>
-  
-  
-  <article class="card card-content">
-    <div class="recent-posts-card">
-  <div class="recent-posts-header">
-    <i 
-      class="iconfont icon-wenzhang_huaban" 
-      style="padding-right: 2px;">
-    </i>最近文章
-  </div>
-  <div class="recent-posts-list">
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-10-23</div>
-        <a href="/binary/"><div class="recent-posts-item-content">二进制相关</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-10-22</div>
-        <a href="/algorithm-skills/"><div class="recent-posts-item-content">由数据范围反推时间复杂度及算法</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-10-15</div>
-        <a href="/paper-deep-learning-detect-BOD5/"><div class="recent-posts-item-content">基于深度学习的城市港口水体BOD5稀疏矩阵软检测</div></a>
-      </div>
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2023-09-23</div>
-        <a href="/algorithm-greedy/"><div class="recent-posts-item-content">贪心算法</div></a>
-      </div>
-    
-  </div>
-</div>
-  </article>
-  
-  
-</div>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </div>
-     
-    <footer class="footer">
-  <div class="footer-container">
-    <div>
-      <div class="footer-dsc">
-        <span>
-          Copyright ©
-          
-            2022
-          
-          
-                - 
-                2023
-          
-        </span>
-        &nbsp;
-        <a 
-          href="/" 
-          class="footer-link">
-          HawYiorのBlog
-        </a>
-      </div>
-    </div>
-
-    
-      <div class="footer-dsc">
-        
-          Powered by
-          <a 
-            href="https://hexo.io/" 
-            class="footer-link" 
-            target="_blank" 
-            rel="nofollow noopener noreferrer">
-            &nbsp;Hexo
-          </a>
-        
-        
-          <span>&nbsp;|&nbsp;</span>
-        
-        
-          Theme -
-          <a 
-            href="https://github.com/theme-kaze" 
-            class="footer-link" 
-            target="_blank"
-            rel="nofollow noopener noreferrer">
-            &nbsp;Kaze
-          </a>
-        
-      </div>
-    
-    
-    
-    
-</footer>
- 
-    
-  <a 
-    role="button" 
-    id="scrollbutton" 
-    class="basebutton" 
-    aria-label="回到顶部">
-    <i class="iconfont icon-arrowleft button-icon"></i>
-  </a>
-
-<a 
-  role="button" 
-  id="menubutton"
-  aria-label="menu button"
-  class="basebutton">
-  <i class="iconfont icon-menu button-icon"></i>
-</a>
-<a 
-  role="button" 
-  id="popbutton" 
-  class="basebutton" 
-  aria-label="控制中心">
-  <i class="iconfont icon-expand button-icon"></i>
-</a>
-<a 
-  role="button" 
-  id="darkbutton" 
-  class="basebutton darkwidget" 
-  aria-label="夜色模式">
-  <i class="iconfont icon-weather button-icon"></i>
-</a>
-<a 
-  role="button" 
-  id="searchbutton" 
-  class="basebutton searchwidget" 
-  aria-label="搜索">
-  <i class="iconfont icon-search button-icon"></i>
-</a> 
-     
-     
       
-
-  
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
   
     
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+<nav id="article-nav">
+  
+    <a href="/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023%E5%B9%B4%E4%B8%AD%E9%97%B2%E8%81%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          2023年中闲聊
+        
+      </div>
+    </a>
+  
+</nav>
 
   
- 
-     
-     
-      <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img')
-    var i
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a')
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
-      wrapper.setAttribute('aria-label', 'illustration')
-      wrapper.style.cssText =
-        'width: 100%; display: flex; justify-content: center;'
-      if (img[i].alt) wrapper.dataset.caption = img[i].alt
-      wrapper.dataset.nolink = true
-      img[i].before(wrapper)
-      wrapper.append(img[i])
-      var divWrap = document.createElement('div')
-      divWrap.classList.add('gallery')
-      wrapper.before(divWrap)
-      divWrap.append(wrapper)
-    }
-    baguetteBox.run('.gallery')
-  }
-</script>
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <p>Powered by Hexo & Theme Mashiro & GitHub Pages</p>
+<p>Copyright © 2022-2023 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tools" class="mobile-nav-link">Tools</a>
+  
+    <a href="/log" class="mobile-nav-link">Log</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
 <script>
-  loadScript(
-    "/js/lib/lightbox/baguetteBox.min.js",
-    addImgLayout
-  )
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
 </script>
- 
-     
-     
-    <script src="/js/main.js"></script> 
-     
-    
-      <script>
-        var addLazyload = function () {
-          var observer = lozad('.lozad', {
-            load: function (el) {
-              el.srcset = el.getAttribute('data-src')
-            },
-            loaded: function (el) {
-              el.classList.add('loaded')
-            },
-          })
-          observer.observe()
-        }
-      </script>
-      <script>
-        loadScript('/js/lib/lozad.min.js', addLazyload)
-      </script>
-    
-    <script src="//instant.page/5.1.0" type="module"
-      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
-    
-    
-      <script>
-        setTimeout(() => {localSearch("search.json")}, 0)
-      </script>
-    
-  </body>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
 </html>
