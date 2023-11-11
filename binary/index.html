@@ -82,14 +82,14 @@
     
 <div id="article-toc">
     <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text"> 基础运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%95%B0span-classbd-boxh-char-classbd-bd-begh-inner-h-innerh-charspan%E8%B4%9F%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text"> 正数、负数的表示</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">基础运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%95%B0%3Cspan-class=%22bd-box%22%3E%3Ch-char%20class=%22bd%20bd-beg%22%3E%3Ch-inner%3E%E3%80%81%3C/h-inner%3E%3C/h-char%3E%3C/span%3E%E8%B4%9F%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">正数、负数的表示</span></a></li></ol>
 </div>
 
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>计算机以二进制表示数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以表示电路中的正反<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>在二进制下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一个位只有0和1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>逢二进一位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
 <p>计算机中存储数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以字节为单位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一个字节有8个位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即可以表示-128~127范围的数字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h2 id="基础运算"><a class="markdownIt-Anchor" href="#基础运算"></a> 基础运算</h2>
+<h2 id="基础运算">基础运算</h2>
 <blockquote>
 <p>与</p>
 </blockquote>
@@ -142,7 +142,7 @@ c>>4;
 移位前<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 1001
 移位后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0000 0001<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>十进制值为1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们发现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>右移n位就是除以2的n次方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当得到的商不是整数时会往小取整</p>
-<h2 id="正数span-classbd-boxh-char-classbd-bd-begh-inner-h-innerh-charspan负数的表示"><a class="markdownIt-Anchor" href="#正数span-classbd-boxh-char-classbd-bd-begh-inner-h-innerh-charspan负数的表示"></a> 正数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>负数的表示</h2>
+<h2 id="正数&lt;span-class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;、&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;负数的表示">正数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>负数的表示</h2>
 <p>对于负数的表示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比较特殊<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其有一条运算规律<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>对非负数的二进制进行取反<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>然后+1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>便可得其负数的二进制表示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>以3为例子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token number">00000011</span><span class="token comment">//3的二进制</span>
 <span class="token comment">//~00000011 对3进行取反<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>得到结果</span>
