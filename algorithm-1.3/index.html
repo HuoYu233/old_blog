@@ -82,12 +82,12 @@
     
 <div id="article-toc">
     <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">双指针算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">位运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">离散化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="toc-number">4.</span> <span class="toc-text">区间合并</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 双指针算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text"> 位运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text"> 离散化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="toc-number">4.</span> <span class="toc-text"> 区间合并</span></a></li></ol>
 </div>
 
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="双指针算法">双指针算法</h2>
+        <h2 id="双指针算法"><a class="markdownIt-Anchor" href="#双指针算法"></a> 双指针算法</h2>
 <ul>
 <li>两个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个指针</li>
 <li><strong>一个序列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>两个指针</strong></li>
@@ -98,9 +98,9 @@
     <span class="token comment">//每道题具体的逻辑</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>核心思想</strong></p>
-<p>复杂度由<span class="markdown-them-math-inline">$O(n^2)$</span>优化到<span class="markdown-them-math-inline">$O(n)$</span></p>
+<p>复杂度由<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>优化到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
 <p>先想出朴素做法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>寻找i与j之间的关系<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是否有单调性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>进行双指针优化</p>
-<h2 id="位运算">位运算</h2>
+<h2 id="位运算"><a class="markdownIt-Anchor" href="#位运算"></a> 位运算</h2>
 <ul>
 <li>n的二进制表示中第k位数字是几</li>
 </ul>
@@ -116,11 +116,11 @@
 <p>​	树状数组基本操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x的最后一位1</p>
 <p>​	<strong>x&amp;(-x)</strong></p>
 <p>​	原理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><code>-x=(~x+1)</code></p>
-<h2 id="离散化">离散化</h2>
+<h2 id="离散化"><a class="markdownIt-Anchor" href="#离散化"></a> 离散化</h2>
 <p>这里特指整数离散化</p>
 <p>将<strong>值域大</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><strong>个数少</strong>的数组映射到0,1…n的自然数</p>
 <p>①数组中可能有重复元素<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要去重</p>
-<p>②如何求出<span class="markdown-them-math-inline">$x$</span>离散化后的值-&gt;二分</p>
+<p>②如何求出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>离散化后的值-&gt;二分</p>
 <p><strong>C++模版</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> alls<span class="token punctuation">;</span> <span class="token comment">// 存储所有待离散化的值</span>
 <span class="token function">sort</span><span class="token punctuation">(</span>alls<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> alls<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将所有值排序</span>
@@ -138,10 +138,10 @@ alls<span class="token punctuation">.</span><span class="token function">erase</
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 映射到1, 2, ...n</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由于Java中没有<span class="markdown-them-math-inline">$unique$</span>方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中排序与去重的具体实现如下</p>
+<p>由于Java中没有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>n</mi><mi>i</mi><mi>q</mi><mi>u</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">unique</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span></span></span></span>方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中排序与去重的具体实现如下</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 去重 + 排序  </span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> distinctSorterAlls <span class="token operator">=</span> alls<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">distinct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="区间合并">区间合并</h2>
+<h2 id="区间合并"><a class="markdownIt-Anchor" href="#区间合并"></a> 区间合并</h2>
 <ul>
 <li>
 <p>按照区间左端点排序</p>
@@ -151,7 +151,7 @@ alls<span class="token punctuation">.</span><span class="token function">erase</
 <ul>
 <li>相交
 <ul>
-<li>更新右端点为两个区间的<span class="markdown-them-math-inline">$max$</span></li>
+<li>更新右端点为两个区间的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span></span></span></span></li>
 </ul>
 </li>
 <li>不相交
