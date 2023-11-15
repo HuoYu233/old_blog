@@ -280,6 +280,15 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 有唯一解</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="组合数">组合数</h3>
+<p>组合数<span class="markdown-them-math-inline">$C_{n}^{m}=\frac{n!}{m!(n-m)!} $</span></p>
+<p>朴素求法</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">LL <span class="token function">C</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    LL res <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>a<span class="token punctuation">,</span>j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>b<span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">,</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        res <span class="token operator">=</span> res<span class="token operator">*</span>i<span class="token operator">/</span>j<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="递推法求组合数">递推法求组合数</h4>
 <p><span class="markdown-them-math-inline">$C_{a}^{b} = C_{a-1}^{b} + C_{a-1}^{b-1}$</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// c[a][b] 表示从a个苹果中选b个的方案数</span>
