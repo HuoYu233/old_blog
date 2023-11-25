@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>机器学习笔记 | HawYiorのBlog</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="HawYiorの机器学习笔记">
+  
+  
+  
+    <link rel="shortcut icon" href="/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+      <a class="main-nav-link" href="/tools">Tools</a>
+    
+      <a class="main-nav-link" href="/log">Log</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">HawYiorのBlog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="/" id="subtitle">we are here to code the world!</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-machine-learning-notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/machine-learning-notes/" class="article-date">
+  <time class="dt-published" datetime="2023-11-25T15:45:21.000Z" itemprop="datePublished">2023-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      机器学习笔记
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#machine-learning"><span class="toc-number">1.</span> <span class="toc-text">Machine Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">梯度下降</span></a></li></ol></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="machine-learning">Machine Learning</h1>
+<p>监督学习<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>输入特征x<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>输出目标y<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>对数据集进行预测<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>分为<strong>回归</strong>和<strong>分类</strong></p>
+<p>无监督学习<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>输入特征x<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>没有目标y<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对数据集进行聚类预测</p>
+<h2 id="线性回归">线性回归</h2>
+<p><span class="markdown-them-math-inline">$y^i = wx^i+b$</span></p>
+<p>定义损失函数<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>成本函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要最小化损失函数</p>
+<p><span class="markdown-them-math-inline">$J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} {(y^i-\hat{y})}^2$</span></p>
+<p>其中<span class="markdown-them-math-inline">$y^i$</span>为真实输出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$\hat{y}$</span>为预测输出</p>
+<h3 id="梯度下降">梯度下降</h3>
+<p>需要最小会损失函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要使用梯度下降算法</p>
+<p>定义学习率<code>learning_rate</code>为<span class="markdown-them-math-inline">$\alpha$</span>,一般<span class="markdown-them-math-inline">$\alpha \subseteq  [0,1]$</span></p>
+<p><span class="markdown-them-math-inline">$w = w-  \alpha \frac{\partial{J(w,b)}}{\partial{w}}$</span></p>
+<p><span class="markdown-them-math-inline">$b = b-  \alpha \frac{\partial{J(w,b)}}{\partial{b}}$</span></p>
+<p><img src="pic-1.png" alt="pic-1"></p>
+<p>如果<span class="markdown-them-math-inline">$\alpha$</span>太小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以得到答案<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是时间过长</p>
+<p>如果<span class="markdown-them-math-inline">$\alpha$</span>太大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>大交叉无法收敛<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>甚至发散</p>
+<p>当参数值每次更新时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><span class="markdown-them-math-inline">$J(w,b)$</span>变小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>导数项<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>斜率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>也会变小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对于固定学习率<span class="markdown-them-math-inline">$\alpha$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>步长也会变小<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从而达到局部最优解</p>
+<p>对导数项分别求导</p>
+<p><span class="markdown-them-math-inline">$\frac{\partial{J(w,b)}}{\partial{w}} = \frac{1}{m} \sum_{i=1}^{m} (f(x^i)-y^i)x^i$</span></p>
+<p><span class="markdown-them-math-inline">$\frac{\partial{J(w,b)}}{\partial{b}} = \frac{1}{m} \sum_{i=1}^{m} (f(x^i)-y^i)$</span></p>
+<p>其中<span class="markdown-them-math-inline">$f(x^i) = wx^i+b$</span></p>
+<p>对于线性回归损失<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>他的损失函数图像是一个凸函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只有一个全局最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>没有局部最小值</p>
+<p>选择合适得到学习率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就可以得到<span class="markdown-them-math-inline">$min(J(w,b))$</span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/algorithm-skills/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          由数据范围反推时间复杂度及算法
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <p>Powered by Hexo & Theme Mashiro & GitHub Pages</p>
+<p>Copyright © 2022-2023 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tools" class="mobile-nav-link">Tools</a>
+  
+    <a href="/log" class="mobile-nav-link">Log</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>
