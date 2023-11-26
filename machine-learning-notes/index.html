@@ -82,7 +82,7 @@
     
 <div id="article-toc">
     <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#machine-learning"><span class="toc-number">1.</span> <span class="toc-text">Machine Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">梯度下降</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#machine-learning"><span class="toc-number">1.</span> <span class="toc-text">Machine Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">1.1.2.</span> <span class="toc-text">多元线性回归</span></a></li></ol></li></ol></li></ol>
 </div>
 
     <div class="e-content article-entry" itemprop="articleBody">
@@ -110,6 +110,16 @@
 <p>其中<span class="markdown-them-math-inline">$f(x^i) = wx^i+b$</span></p>
 <p>对于线性回归损失<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>他的损失函数图像是一个凸函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只有一个全局最小值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>没有局部最小值</p>
 <p>选择合适得到学习率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就可以得到<span class="markdown-them-math-inline">$min(J(w,b))$</span></p>
+<h3 id="多元线性回归">多元线性回归</h3>
+<p>假设特征有<span class="markdown-them-math-inline">$n$</span>个<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>定义<span class="markdown-them-math-inline">$\vec{x} = \begin{bmatrix}
+  x_1 &amp; x_2 &amp; x_3 &amp; ...
+\end{bmatrix}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>参数<span class="markdown-them-math-inline">$\vec{w} = \begin{bmatrix}
+  w_1 &amp; w_2 &amp; w_3 &amp; ...
+\end{bmatrix}$</span></p>
+<p>则<span class="markdown-them-math-inline">$f_{\vec{w},b}=\vec{w} \cdot \vec{x} +b$</span></p>
+<p><code>·</code>为两个向量的点积(dot)<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><span class="markdown-them-math-inline">$\vec{w} \cdot \vec{x} = w_1*x_1+w_2*x_2+....+w_n*x_n$</span></p>
+<p><strong>矢量化</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>代码简洁<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>运行速度快</p>
+<p>PS: 正规方程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>某些机器学习库在后端求<span class="markdown-them-math-inline">$w,b$</span>的方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只适用于线性回归<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且速度慢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不要求掌握</p>
 
       
     </div>
