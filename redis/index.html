@@ -80,24 +80,24 @@
     
 <div id="article-toc">
     <h2 class="widget-title">目录</h2>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text"> 下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text"> 基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">3.</span> <span class="toc-text"> String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-number">4.</span> <span class="toc-text"> List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-number">5.</span> <span class="toc-text"> Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash"><span class="toc-number">6.</span> <span class="toc-text"> Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zset"><span class="toc-number">7.</span> <span class="toc-text"> Zset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#geospatial"><span class="toc-number">8.</span> <span class="toc-text"> geospatial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hyperloglog"><span class="toc-number">9.</span> <span class="toc-text"> hyperloglog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bitmaps"><span class="toc-number">10.</span> <span class="toc-text"> bitmaps</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">3.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-number">4.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-number">5.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash"><span class="toc-number">6.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zset"><span class="toc-number">7.</span> <span class="toc-text">Zset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#geospatial"><span class="toc-number">8.</span> <span class="toc-text">geospatial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hyperloglog"><span class="toc-number">9.</span> <span class="toc-text">hyperloglog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bitmaps"><span class="toc-number">10.</span> <span class="toc-text">bitmaps</span></a></li></ol>
 </div>
 
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="下载安装"><a class="markdownIt-Anchor" href="#下载安装"></a> 下载安装</h2>
-<p>1.Linux下载安装包.tar.gz<br />
+        <h2 id="下载安装">下载安装</h2>
+<p>1.Linux下载安装包.tar.gz<br>
 2.解压Redis安装包</p>
 <p>…</p>
-<h2 id="基本命令"><a class="markdownIt-Anchor" href="#基本命令"></a> 基本命令</h2>
-<p>select [index] 选择几号数据库<br />
-keys * 查看所有键值对<br />
-DBSIZE 数据库大小<br />
+<h2 id="基本命令">基本命令</h2>
+<p>select [index] 选择几号数据库<br>
+keys * 查看所有键值对<br>
+DBSIZE 数据库大小<br>
 flushdb / flushall 清除</p>
-<p>expire [key] [second]<br />
+<p>expire [key] [second]<br>
 ttl [key]</p>
 <p>type [key]</p>
-<h2 id="string"><a class="markdownIt-Anchor" href="#string"></a> String</h2>
+<h2 id="string">String</h2>
 <ul>
 <li>
 <p>append</p>
@@ -148,7 +148,7 @@ ttl [key]</p>
 <p>getset key</p>
 </li>
 </ul>
-<h2 id="list"><a class="markdownIt-Anchor" href="#list"></a> List</h2>
+<h2 id="list">List</h2>
 <ul>
 <li>
 <p>lpush [key] [value]</p>
@@ -187,7 +187,7 @@ ttl [key]</p>
 <p>linsert [key] [before|after] [pivot] [value]</p>
 </li>
 </ul>
-<h2 id="set"><a class="markdownIt-Anchor" href="#set"></a> Set</h2>
+<h2 id="set">Set</h2>
 <ul>
 <li>
 <p>sadd [key] [value]</p>
@@ -224,7 +224,7 @@ ttl [key]</p>
 <p><strong>共同关注<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>好有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>推荐好友…</strong></p>
 </li>
 </ul>
-<h2 id="hash"><a class="markdownIt-Anchor" href="#hash"></a> Hash</h2>
+<h2 id="hash">Hash</h2>
 <p>key-map</p>
 <ul>
 <li>
@@ -268,7 +268,7 @@ ttl [key]</p>
 <p><strong>用于存储变更的数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对象</strong></p>
 </li>
 </ul>
-<h2 id="zset"><a class="markdownIt-Anchor" href="#zset"></a> Zset</h2>
+<h2 id="zset">Zset</h2>
 <p>在set基础上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>增加一个值用于排序</p>
 <ul>
 <li>zadd [key] [score] [value]</li>
@@ -291,7 +291,7 @@ ttl [key]</p>
 <p><strong>有序的set<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存储班级成绩<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>工资表排序</strong></p>
 <p><strong>添加权重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>普通消息1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊消息2</strong></p>
 <p><strong>排行榜应用实现</strong></p>
-<h2 id="geospatial"><a class="markdownIt-Anchor" href="#geospatial"></a> geospatial</h2>
+<h2 id="geospatial">geospatial</h2>
 <p>推算地理位置的信息</p>
 <ul>
 <li>
@@ -320,7 +320,7 @@ ttl [key]</p>
 </li>
 </ul>
 <p><strong>底层是Zset<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以用zset操作</strong></p>
-<h2 id="hyperloglog"><a class="markdownIt-Anchor" href="#hyperloglog"></a> hyperloglog</h2>
+<h2 id="hyperloglog">hyperloglog</h2>
 <p>基数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>不重复的元素</p>
 <p>hyperloglog用于基数统计</p>
 <p>优点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>占用内存固定</p>
@@ -329,7 +329,7 @@ ttl [key]</p>
 <li>pfcount [key]</li>
 <li>pfmerge [destkey] [source1] [source2]</li>
 </ul>
-<h2 id="bitmaps"><a class="markdownIt-Anchor" href="#bitmaps"></a> bitmaps</h2>
+<h2 id="bitmaps">bitmaps</h2>
 <p>统计用户信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>活跃<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>不活跃<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>登录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>未登录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>打卡<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>未打卡</p>
 <ul>
 <li>
@@ -389,7 +389,7 @@ ttl [key]</p>
     <div id="footer-info" class="inner">
       
         <p>Powered by Hexo & Theme Mashiro & GitHub Pages</p>
-<p>Copyright © 2022-2023 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
+<p>Copyright © 2022-2024 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
       
     </div>
   </div>
