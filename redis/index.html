@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Redis学习笔记 | HawYiorのBlog</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Redi">
+  
+  
+  
+    <link rel="shortcut icon" href="/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+      <a class="main-nav-link" href="/log">Log</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">HawYiorのBlog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="/" id="subtitle">we are here to code the world!</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/redis/" class="article-date">
+  <time class="dt-published" datetime="2023-11-21T03:48:19.000Z" itemprop="datePublished">2023-11-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Redis学习笔记
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text"> 下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text"> 基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">3.</span> <span class="toc-text"> String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-number">4.</span> <span class="toc-text"> List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-number">5.</span> <span class="toc-text"> Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash"><span class="toc-number">6.</span> <span class="toc-text"> Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zset"><span class="toc-number">7.</span> <span class="toc-text"> Zset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#geospatial"><span class="toc-number">8.</span> <span class="toc-text"> geospatial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hyperloglog"><span class="toc-number">9.</span> <span class="toc-text"> hyperloglog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bitmaps"><span class="toc-number">10.</span> <span class="toc-text"> bitmaps</span></a></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="下载安装"><a class="markdownIt-Anchor" href="#下载安装"></a> 下载安装</h2>
+<p>1.Linux下载安装包.tar.gz<br />
+2.解压Redis安装包</p>
+<p>…</p>
+<h2 id="基本命令"><a class="markdownIt-Anchor" href="#基本命令"></a> 基本命令</h2>
+<p>select [index] 选择几号数据库<br />
+keys * 查看所有键值对<br />
+DBSIZE 数据库大小<br />
+flushdb / flushall 清除</p>
+<p>expire [key] [second]<br />
+ttl [key]</p>
+<p>type [key]</p>
+<h2 id="string"><a class="markdownIt-Anchor" href="#string"></a> String</h2>
+<ul>
+<li>
+<p>append</p>
+</li>
+<li>
+<p>strlen</p>
+</li>
+<li>
+<p>getrange [key] [from] [to]</p>
+</li>
+<li>
+<p>setrange [key] [from] X</p>
+</li>
+<li>
+<p>incr [key]</p>
+</li>
+<li>
+<p>decr[ key]</p>
+</li>
+<li>
+<p>incrby [key] [step]</p>
+</li>
+<li>
+<p>decrby[ key] [step]</p>
+</li>
+</ul>
+<p>自增<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>自减<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设置步长</p>
+<ul>
+<li>
+<p>setex 设置过期时间</p>
+</li>
+<li>
+<p>setnx 如果不存在设置</p>
+</li>
+<li>
+<p>meset k1 v1 k2 v2</p>
+</li>
+<li>
+<p>mget k1 k2 k3</p>
+</li>
+<li>
+<p>msetnx 原子性操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要么一起成功<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要么一起失败</p>
+</li>
+<li>
+<p>mset user:1:name huoyu user:1:age 19 操作对象</p>
+</li>
+<li>
+<p>getset key</p>
+</li>
+</ul>
+<h2 id="list"><a class="markdownIt-Anchor" href="#list"></a> List</h2>
+<ul>
+<li>
+<p>lpush [key] [value]</p>
+</li>
+<li>
+<p>rpush [key] [value]</p>
+</li>
+<li>
+<p>lpop [key]</p>
+</li>
+<li>
+<p>rpop [key]</p>
+</li>
+<li>
+<p>lrange [from] [to]</p>
+</li>
+<li>
+<p>lindex [key]</p>
+</li>
+<li>
+<p>llen [key]</p>
+</li>
+<li>
+<p>lremove [key] [count] [value]</p>
+</li>
+<li>
+<p>ltrim [key] [from] [to]</p>
+</li>
+<li>
+<p>rpoplpush [source] [destination]</p>
+</li>
+<li>
+<p>lset [key] [index] [value]</p>
+</li>
+<li>
+<p>linsert [key] [before|after] [pivot] [value]</p>
+</li>
+</ul>
+<h2 id="set"><a class="markdownIt-Anchor" href="#set"></a> Set</h2>
+<ul>
+<li>
+<p>sadd [key] [value]</p>
+</li>
+<li>
+<p>smembers [key]</p>
+</li>
+<li>
+<p>sismember [key] [value]</p>
+</li>
+<li>
+<p>scard [key]</p>
+</li>
+<li>
+<p>srem [key] [member…]</p>
+</li>
+<li>
+<p>srandmember [key]</p>
+</li>
+<li>
+<p>spop [key]</p>
+</li>
+<li>
+<p>smove [source] [destination] [value]</p>
+</li>
+<li>
+<p>sdiff [key1] [key2]</p>
+</li>
+<li>
+<p>sinter [key1] [key2]</p>
+</li>
+<li>
+<p>sunion [key1] [key2]</p>
+<p><strong>共同关注<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>好有<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>推荐好友…</strong></p>
+</li>
+</ul>
+<h2 id="hash"><a class="markdownIt-Anchor" href="#hash"></a> Hash</h2>
+<p>key-map</p>
+<ul>
+<li>
+<p>hset [key] [field] [value]</p>
+</li>
+<li>
+<p>hget [key] [field]</p>
+</li>
+<li>
+<p>hmset</p>
+</li>
+<li>
+<p>hmget</p>
+</li>
+<li>
+<p>hgetall</p>
+</li>
+<li>
+<p>hdel [key] [field]</p>
+</li>
+<li>
+<p>hlen [key]</p>
+</li>
+<li>
+<p>hexist [key] [field]</p>
+</li>
+<li>
+<p>hkeys [key]</p>
+</li>
+<li>
+<p>hvals [key]</p>
+</li>
+<li>
+<p>hincre(by) [key] [field] ([field])</p>
+</li>
+<li>
+<p>hdecre(by) [key] [field] ([field])</p>
+</li>
+<li>
+<p>hsetnx [key] [field] [value]</p>
+<p><strong>用于存储变更的数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>对象</strong></p>
+</li>
+</ul>
+<h2 id="zset"><a class="markdownIt-Anchor" href="#zset"></a> Zset</h2>
+<p>在set基础上<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>增加一个值用于排序</p>
+<ul>
+<li>zadd [key] [score] [value]</li>
+<li>zrange [key] [from] [to]</li>
+<li>zrangebyscore [key] [min] [max]</li>
+<li>zrevrange [key] [max] [min]</li>
+</ul>
+<p>min-&gt; -inf      max-&gt; +inf</p>
+<ul>
+<li>
+<p>zrem [key] [value]</p>
+</li>
+<li>
+<p>zcard [key]</p>
+</li>
+<li>
+<p>zcount [key] [min] [max]</p>
+</li>
+</ul>
+<p><strong>有序的set<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>存储班级成绩<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>工资表排序</strong></p>
+<p><strong>添加权重<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>普通消息1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>特殊消息2</strong></p>
+<p><strong>排行榜应用实现</strong></p>
+<h2 id="geospatial"><a class="markdownIt-Anchor" href="#geospatial"></a> geospatial</h2>
+<p>推算地理位置的信息</p>
+<ul>
+<li>
+<p>geoadd [key] [longitude] [latitude] [member]</p>
+<p>一般下载城市数据一键导入</p>
+</li>
+<li>
+<p>geodist [key] [from] [to] ([unit])</p>
+<p>返回指定位置之间的距离,使用unit选择单位(m,km…)</p>
+</li>
+<li>
+<p>geohash</p>
+<p>返回一个或者多个元素的hash表示<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>了解即可<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
+</li>
+<li>
+<p>geopos [key] [city]</p>
+<p>获取key的经纬度值</p>
+</li>
+<li>
+<p>georadius [key] [longitude] [latitude] [unit] ([withdist]/[withcoord]) ([count])</p>
+<p>以某经纬度为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>找到给定半径内的元素</p>
+</li>
+<li>
+<p>geoeadiusbymember</p>
+<p>以成员为中心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>找到给定半径内的元素<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>与georadius类似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
+</li>
+</ul>
+<p><strong>底层是Zset<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以用zset操作</strong></p>
+<h2 id="hyperloglog"><a class="markdownIt-Anchor" href="#hyperloglog"></a> hyperloglog</h2>
+<p>基数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>不重复的元素</p>
+<p>hyperloglog用于基数统计</p>
+<p>优点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>占用内存固定</p>
+<ul>
+<li>pfadd [key] [v1] [v2] [v3] [v4]</li>
+<li>pfcount [key]</li>
+<li>pfmerge [destkey] [source1] [source2]</li>
+</ul>
+<h2 id="bitmaps"><a class="markdownIt-Anchor" href="#bitmaps"></a> bitmaps</h2>
+<p>统计用户信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>活跃<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>不活跃<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>登录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>未登录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>打卡<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>未打卡</p>
+<ul>
+<li>
+<p>setbit [key] [index] [value]</p>
+</li>
+<li>
+<p>getbit [key] [index]</p>
+</li>
+<li>
+<p>bitcount [key]</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/machine-learning-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          机器学习课程笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/algorithm-skills/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          由数据范围反推时间复杂度及算法
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <p>Powered by Hexo & Theme Mashiro & GitHub Pages</p>
+<p>Copyright © 2022-2023 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/log" class="mobile-nav-link">Log</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>
