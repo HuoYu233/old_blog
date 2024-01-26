@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《动手深度学习》阅读笔记 | HawYiorのBlog</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="《动手深度学习》书籍笔记">
+  
+  
+  
+    <link rel="shortcut icon" href="/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+      <a class="main-nav-link" href="/log">Log</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">HawYiorのBlog</a>
+  </h1>
+  
+    <h2 id="subtitle-wrap">
+      <a href="/" id="subtitle">we are here to code the world!</a>
+    </h2>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-dive-into-deep-learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/dive-into-deep-learning/" class="article-date">
+  <time class="dt-published" datetime="2024-01-22T13:52:00.000Z" itemprop="datePublished">2024-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《动手深度学习》阅读笔记
+    </h1>
+  
+
+      </header>
+    
+    
+<div id="article-toc">
+    <h2 class="widget-title">目录</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">1. 预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 线性代数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86"><span class="toc-number">1.3.</span> <span class="toc-text">1.2 自动微分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%A6%82%E7%8E%87"><span class="toc-number">1.4.</span> <span class="toc-text">1.3 概率</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">2.</span> <span class="toc-text">2. 线性神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-softmax"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 softmax</span></a></li></ol></li></ol>
+</div>
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-预备知识">1. 预备知识</h1>
+<h2 id="11-数据处理">1.1 数据处理</h2>
+<p><code>Tensor</code>数据类型和numpy中的<code>ndarray</code>类型相似<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是差异点在于</p>
+<p>首先<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>GPU很好地支持加速计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而NumPy仅支持CPU计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span></p>
+<p>其次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>张量类支持自动微分<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 这些功能使得张量类更适合深度学习</p>
+<h2 id="12-线性代数">1.2 线性代数</h2>
+<p>向量</p>
+<p><span class="markdown-them-math-inline">$x = \begin{bmatrix}
+ x_1 \\
+ x_2 \\
+x_3
+\end{bmatrix}$</span></p>
+<p>矩阵</p>
+<p><span class="markdown-them-math-inline">$A = \begin{bmatrix}
+ a_{11} &amp; a_{12} &amp;a_{13} \\
+ a_{21} &amp; a_{22} &amp;a_{23} \\
+  a_{31}&amp;a_{32}  &amp;a_{33}
+\end{bmatrix}$</span></p>
+<ul>
+<li><em>Hadamard</em>积</li>
+</ul>
+<p>两个矩阵的按元素乘法称为<em>Hadamard积</em><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Hadamard product<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>数学符号⊙<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
+<p><span class="markdown-them-math-inline">$A⊙B = \begin{bmatrix}
+ a_{11}b_{11} &amp; a_{12}b_{12} &amp;a_{13}b_{13} \\
+ a_{21}b_{21} &amp; a_{22}b_{22} &amp;a_{23}b_{23} \\
+  a_{31}b_{31}&amp;a_{32}b_{32}  &amp;a_{3,3}b_{33}
+\end{bmatrix}$</span></p>
+<p>将张量乘以或加上一个标量不会改变张量的形状<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其中张量的每个元素都将与标量相加或相乘<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>非降维求和</li>
+</ul>
+<p>如果我们想沿某个轴计算<code>A</code>元素的累积总和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 比如<code>axis=0</code><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>按行计算<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以调用<code>cumsum</code>函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 此函数不会沿任何轴降低输入张量的维度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">A<span class="token punctuation">.</span>cumsum<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>点积</li>
+</ul>
+<p>给定两个向量<span class="markdown-them-math-inline">$x,y$</span>的点积<span class="markdown-them-math-inline">$x^Ty$</span>(或<span class="markdown-them-math-inline">$&lt;x,y&gt;$</span>)是相同位置的按元素乘积的和</p>
+<p><span class="markdown-them-math-inline">$x^Ty = \sum_{i=1}^{d}x_iy_i$</span></p>
+<p>将两个向量规范化得到单位长度后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>点积表示它们夹角的余弦<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>矩阵-向量积</li>
+</ul>
+<p><span class="markdown-them-math-inline">$Ax = \begin{bmatrix}
+ a_1^T \\
+ a_2^T \\
+a_3^T
+\end{bmatrix}x = \begin{bmatrix}
+ a_1^Tx \\
+ a_2^Tx \\
+a_3^Tx
+\end{bmatrix}$</span></p>
+<p>在代码中使用张量表示矩阵-向量积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们使用<code>mv</code>函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<ul>
+<li>矩阵-矩阵乘法</li>
+</ul>
+<p>用行向量<span class="markdown-them-math-inline">$A_i^T$</span>表示矩阵<span class="markdown-them-math-inline">$A$</span>的第<span class="markdown-them-math-inline">$i$</span>行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>列向量<span class="markdown-them-math-inline">$b_j$</span>作为矩阵<span class="markdown-them-math-inline">$B$</span>的第<span class="markdown-them-math-inline">$j$</span>列</p>
+<p>看作简单地执行m次矩阵-向量积<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并将结果拼接在一起<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>使用<code>mm</code>函数</p>
+<p><span class="markdown-them-math-inline">$C=AB= \begin{bmatrix}
+ a_1^T \\
+ a_2^T \\
+a_3^T
+\end{bmatrix}\begin{bmatrix}
+ b_1 &amp; b_2 &amp; b_3\\
+\end{bmatrix} = \begin{bmatrix}
+ a_1^Tb_1 &amp; a_1^Tb_2 &amp; a_1^Tb_3\\
+ a_2^Tb_1 &amp; a_2^Tb_2 &amp; a_2^Tb_3 \\
+a_3^Tb_1 &amp; a_3^Tb_2 &amp; a_3^Tb_3
+\end{bmatrix}$</span></p>
+<ul>
+<li>范数</li>
+</ul>
+<p>欧几里得距离是一个<span class="markdown-them-math-inline">$L_2$</span>范数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span> 假设<span class="markdown-them-math-inline">$n$</span>维向量<span class="markdown-them-math-inline">$x$</span>中的元素是<span class="markdown-them-math-inline">$x_1,x_2...x_n$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其<span class="markdown-them-math-inline">$L_2$</span><em>范数</em>是向量元素平方和的平方根<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p><span class="markdown-them-math-inline">$||x||_2 = \sqrt{\sum_{i=1}^{n}x_i^2}$</span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">u <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>u<span class="token punctuation">)</span>
+tensor<span class="token punctuation">(</span><span class="token number">5.</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>深度学习中更经常地使用<span class="markdown-them-math-inline">$L_2$</span>范数的平方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也会经常遇到<span class="markdown-them-math-inline">$L_1$</span>范数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它表示为向量元素的绝对值之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<p><span class="markdown-them-math-inline">$||x||_1 = \sum_{i=1}^{n}|x_i|$</span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">torch<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>矩阵<span class="markdown-them-math-inline">$X$</span>的<em>Frobenius范数</em><span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Frobenius norm<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>是矩阵元素平方和的平方根</p>
+<h2 id="12-自动微分">1.2 自动微分</h2>
+<ul>
+<li>计算图</li>
+<li>反向传播</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">4.0</span><span class="token punctuation">,</span> requires_grad<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> torch<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>grad<span class="token punctuation">)</span> <span class="token comment"># None</span>
+y<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>grad <span class="token operator">==</span> <span class="token number">4</span> <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token comment">#tensor([True, True, True, True])</span>
+<span class="token comment"># 在默认情况下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>PyTorch会累积梯度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们需要清除之前的值</span>
+x<span class="token punctuation">.</span>grad<span class="token punctuation">.</span>zero_<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当<code>y</code>不是标量时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>向量<code>y</code>关于向量<code>x</code>的导数的最自然解释是一个矩阵<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 对于高阶和高维的<code>y</code>和<code>x</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>求导的结果可以是一个高阶张量<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>然而<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>虽然这些更奇特的对象确实出现在高级机器学习中<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>包括深度学习中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 但当调用向量的反向计算时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们通常会试图计算一批训练样本中每个组成部分的损失函数的导数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 这里<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们的目的不是计算微分矩阵<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而是单独计算批量中每个样本的偏导数之和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 对非标量调用backward需要传入一个gradient参数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>该参数指定微分函数关于self的梯度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></span>
+<span class="token comment"># 本例只想求偏导数的和<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以传递一个1的梯度是合适的</span>
+x<span class="token punctuation">.</span>grad<span class="token punctuation">.</span>zero_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> x <span class="token operator">*</span> x
+<span class="token comment"># 等价于y.backward(torch.ones(len(x)))</span>
+y<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+x<span class="token punctuation">.</span>grad <span class="token comment"># tensor([0., 2., 4., 6.])</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>有时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们希望将某些计算移动到记录的计算图之外<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 例如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>假设<code>y</code>是作为<code>x</code>的函数计算的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而<code>z</code>则是作为<code>y</code>和<code>x</code>的函数计算的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 想象一下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们想计算<code>z</code>关于<code>x</code>的梯度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但由于某种原因<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>希望将<code>y</code>视为一个常数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 并且只考虑到<code>x</code>在<code>y</code>被计算后发挥的作用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>这里可以分离<code>y</code>来返回一个新变量<code>u</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>该变量与<code>y</code>具有相同的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 但丢弃计算图中如何计算<code>y</code>的任何信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 换句话说<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>梯度不会向后流经<code>u</code>到<code>x</code><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> 因此<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面的反向传播函数计算<code>z=u*x</code>关于<code>x</code>的偏导数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时将<code>u</code>作为常数处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span> 而不是<code>z=x*x*x</code>关于<code>x</code>的偏导数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x<span class="token punctuation">.</span>grad<span class="token punctuation">.</span>zero_<span class="token punctuation">(</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> x <span class="token operator">*</span> x
+u <span class="token operator">=</span> y<span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span>
+z <span class="token operator">=</span> u <span class="token operator">*</span> x
+
+z<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+x<span class="token punctuation">.</span>grad <span class="token operator">==</span> u <span class="token comment"># tensor([True, True, True, True])</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="13-概率">1.3 概率</h2>
+<p>[TODO]</p>
+<h1 id="2-线性神经网络">2. 线性神经网络</h1>
+<h2 id="21-线性回归">2.1 线性回归</h2>
+<p>定义<span class="markdown-them-math-inline">$\vec{x} = \begin{bmatrix}
+  x_1 &amp; x_2 &amp; x_3 &amp; ...
+\end{bmatrix}$</span><span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>参数<span class="markdown-them-math-inline">$\vec{w} = \begin{bmatrix}
+  w_1 &amp; w_2 &amp; w_3 &amp; ...
+\end{bmatrix}$</span></p>
+<p><span class="markdown-them-math-inline">$\hat{y} = Xw+b$</span></p>
+<p>损失函数<span class="markdown-them-math-inline">$J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} {(y^i-\hat{y})}^2$</span></p>
+<p>随机梯度下降<code>SGD(stochastic gradient descent)</code></p>
+<h2 id="22-softmax">2.2 softmax</h2>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/machine-learning-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          机器学习课程笔记
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+        <p>Powered by Hexo & Theme Mashiro & GitHub Pages</p>
+<p>Copyright © 2022-2024 HawYior. LICENSE CC BY-NC-SA 4.0.</p>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/log" class="mobile-nav-link">Log</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>
