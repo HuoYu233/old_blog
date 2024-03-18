@@ -453,25 +453,25 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 <p>创建一维数组存储所有哈希值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若不同元素对应同一个哈希值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则在该值拉链下来(链表)</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> e<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> ne<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> idx<span class="token punctuation">;</span>
 
-    <span class="token comment">// 向哈希表中插入一个数</span>
-    <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span> <span class="token comment">//防止(x % N) 是负数</span>
-        e<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
-        ne<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> h<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        h<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> idx <span class="token operator">++</span> <span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<span class="token comment">// 向哈希表中插入一个数</span>
+<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span> <span class="token comment">//防止(x % N) 是负数</span>
+    e<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    ne<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> h<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    h<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> idx <span class="token operator">++</span> <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 在哈希表中查询某个数是否存在</span>
-    <span class="token keyword">bool</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> h<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">=</span> ne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token comment">// 在哈希表中查询某个数是否存在</span>
+<span class="token keyword">bool</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> h<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">=</span> ne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>开放寻址法</li>
 </ol>
@@ -479,17 +479,17 @@ q<span class="token punctuation">[</span>hh<span class="token punctuation">]</sp
 <p>若应该放入的位置已经有元素<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则寻找下一个可以存入的位置</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-   <span class="token comment">// 如果x在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x的下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>如果x不在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x应该插入的位置</span>
-   <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
-   <span class="token punctuation">&#123;</span>
-       <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span>
-       <span class="token keyword">while</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> h<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">!=</span> x<span class="token punctuation">)</span>
-       <span class="token punctuation">&#123;</span>
-           t <span class="token operator">++</span> <span class="token punctuation">;</span>
-           <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">==</span> N<span class="token punctuation">)</span> t <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//从头查找</span>
-       <span class="token punctuation">&#125;</span>
-       <span class="token keyword">return</span> t<span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 如果x在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x的下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span>如果x不在哈希表中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回x应该插入的位置</span>
+<span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> N <span class="token operator">+</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>h<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> h<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">!=</span> x<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        t <span class="token operator">++</span> <span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">==</span> N<span class="token punctuation">)</span> t <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//从头查找</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> t<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中<span class="markdown-them-math-inline">$null = 0x3f3f3f3f$</span></p>
 <h3 id="字符串哈希">字符串哈希</h3>
 <p>将字符串看成P进制数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>P的经验值是131或13331<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>取这两个值的冲突概率低<br>
