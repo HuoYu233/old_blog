@@ -86,7 +86,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h3 id="质数">质数</h3>
-<p>对于大于一的整数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果只包含一和本身这两个约数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它就是质数<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>也叫素数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
+<p>对于<strong>大于一</strong>的整数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果只包含一和本身这两个约数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>它就是质数<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>也叫素数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></p>
 <h4 id="试除法">试除法</h4>
 <p><span class="markdown-them-math-inline">$O(\sqrt n)$</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">is_prime</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
@@ -98,21 +98,28 @@
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="试除法分解质因数">试除法分解质因数</h4>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">N <span class="token operator">=</span> p1<span class="token operator">^</span>c1 <span class="token operator">*</span> p2<span class="token operator">^</span>c2 <span class="token operator">*</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token operator">*</span>pk<span class="token operator">^</span>ck<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>从小到大枚举每一个数</p>
+<p>得到每一对<span class="markdown-them-math-inline">$(p,c)$</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
+    <span class="token comment">// n中只有最多一个大于sqrt(n)的质因子</span>
+    <span class="token comment">// 枚举到sqrt(t)<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最后一个特殊处理 O(sqrt(n))</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> x <span class="token operator">/</span> i<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
         <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> x <span class="token operator">/=</span> i<span class="token punctuation">,</span> s <span class="token operator">++</span> <span class="token punctuation">;</span>
-            cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> <span class="token char">' '</span> <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> x <span class="token operator">/=</span> i<span class="token punctuation">,</span> c <span class="token operator">++</span> <span class="token punctuation">;</span>
+            cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> <span class="token char">' '</span> <span class="token operator">&lt;&lt;</span> c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> cout <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> <span class="token char">' '</span> <span class="token operator">&lt;&lt;</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="朴素筛法求素数">朴素筛法求素数</h4>
 <p>枚举每一个数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果它没有被筛<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则加入质数集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且把它的所有倍数都筛掉</p>
+<p>优化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>埃氏筛法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只需要把质数的倍数筛掉</p>
 <p><span class="markdown-them-math-inline">$O(nloglogn)$</span></p>
+<p>质数定理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>1-n中有<span class="markdown-them-math-inline">$\frac{n}{ln_{}{n}}$</span>个质数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> primes<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> cnt<span class="token punctuation">;</span>     <span class="token comment">// primes[]存储所有素数</span>
 <span class="token keyword">bool</span> st<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment">// st[x]存储x是否被筛掉</span>
 
@@ -127,6 +134,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="线性筛法求素数">线性筛法求素数</h4>
+<p><span class="markdown-them-math-inline">$n$</span>只会被他的最小质因子筛掉</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> primes<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> cnt<span class="token punctuation">;</span>     <span class="token comment">// primes[]存储所有素数</span>
 <span class="token keyword">bool</span> st<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment">// st[x]存储x是否被筛掉</span>
 
@@ -138,12 +146,13 @@
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> primes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> n <span class="token operator">/</span> i<span class="token punctuation">;</span> j <span class="token operator">++</span> <span class="token punctuation">)</span>
         <span class="token punctuation">&#123;</span>
             st<span class="token punctuation">[</span>primes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> primes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> primes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment">//此时primes[j]是i的最小质因子</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="约数">约数</h3>
 <h4 id="试除法求所有约数">试除法求所有约数</h4>
+<p><span class="markdown-them-math-inline">$O(\sqrt{n})$</span></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">get_divisors</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> res<span class="token punctuation">;</span>
@@ -151,7 +160,7 @@
         <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
         <span class="token punctuation">&#123;</span>
             res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> x <span class="token operator">/</span> i<span class="token punctuation">)</span> res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>x <span class="token operator">/</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> x <span class="token operator">/</span> i<span class="token punctuation">)</span> res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>x <span class="token operator">/</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//防止相同的数被push进去两倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>例如4*4=16</span>
         <span class="token punctuation">&#125;</span>
     <span class="token function">sort</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>
