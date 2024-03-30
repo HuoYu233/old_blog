@@ -120,6 +120,31 @@
 <ul>
 <li>读入整行:<code>cin.getline(c,N,'\n')</code> c表示目标char数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>N表示长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>'\n’表示结束符</li>
 </ul>
+<p>结构体小于号重载</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">s</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+    string b<span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token keyword">const</span> s <span class="token operator">&amp;</span>ss<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> a <span class="token operator">&lt;</span> ss<span class="token punctuation">.</span>a
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>string</code>相关<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string s <span class="token operator">=</span> <span class="token string">"I love China"</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//取子串</span>
+<span class="token keyword">char</span> c <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//转成char数组</span>
+<span class="token function">strstr</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"love"</span><span class="token punctuation">)</span> <span class="token comment">//kmp<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>返回出现以后的子串<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这里返回"love China"</span>
+s<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"China"</span><span class="token punctuation">)</span> <span class="token comment">//kmp,返回第一次出现的下标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不存在则返回s.npos</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//分割字符串</span>
+string str <span class="token operator">=</span> <span class="token string">"I LOVE CHINA"</span><span class="token punctuation">;</span>
+stringstream <span class="token function">ss</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+string item<span class="token punctuation">;</span>
+vector<span class="token operator">&lt;</span>string<span class="token operator">></span> elems<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">getline</span><span class="token punctuation">(</span>ss<span class="token punctuation">,</span> item<span class="token punctuation">,</span> <span class="token char">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>item<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        elems<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">:</span> elems<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>i<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       
     </div>
